@@ -1,0 +1,297 @@
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using GD.Data.Services.Interface;
+using GD.Entity.Tables;
+using Microsoft.Extensions.Logging;
+using GD.Data.Services.Common;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using GD.SDK.EFService;
+using GD.Entity.Responsitories;
+using GD.SDK.Data.EFService;
+using GD.SDK.Models;
+using System.Linq;
+
+namespace GD.Data.Services
+{
+    public partial class ChangeService : EfChange<GDContext>, IChangeService
+	{
+
+	    protected readonly ILogger<ChangeService> _logger;
+		protected readonly ICommonService _commonService;
+		private readonly IQueryService _queryService;
+		private readonly IWorkContext _workContext;
+        private readonly IActionContextAccessor _actionContextAccessor;
+
+        public ChangeService(IServiceProvider serviceProvider, IBulkOperation bulkOperation,
+			ILogger<ChangeService> logger, ICommonService commonService, IQueryService queryService, IWorkContext workContext, IActionContextAccessor actionContextAccessor) : base(serviceProvider, bulkOperation)
+		{
+			_logger = logger;
+			_commonService = commonService;
+			_queryService = queryService;
+			_workContext = workContext;
+            _actionContextAccessor = actionContextAccessor;
+
+        }
+        {% for line in item -%}
+        {%-if line.key|length> 0 -%}
+        public Task<bool> ExistsAsync({{line.table}} entity, CancellationToken cancellationToken = default)
+        {
+            return this.dbContext.Set<{{line.table}}>().AnyAsync(e => 
+                                                                {% for im in line.key -%}
+                                                                    {%-if im.idx==1 -%}
+                                                                    e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                    {%if im.idx > 1 %}
+                                                                    && e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                {% endfor -%}
+                                                                , cancellationToken);
+        }
+        public async Task AddAsync({{line.table}} entity, CancellationToken cancellationToken = default)
+        {
+
+            {% for im in line.data -%}
+            {%-if im.Column=="CreatedBy"%}
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            {%-endif -%}
+            {%-if im.Column=="UpdatedBy"%}
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            {%-endif -%}
+            {%-if im.Column=="CreatedDate"%}
+            entity.CreatedDate = DateTime.Now;
+            {%-endif -%}
+            {%-if im.Column=="UpdatedDate"%}
+            entity.UpdatedDate = DateTime.Now;
+            {%-endif -%}
+            {% endfor %}
+            await dbContext.Set<{{line.table}}>().AddAsync(entity);
+            
+        }
+        public async Task AddOrUpdateAsync({{line.table}} entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<{{line.table}}>().FirstOrDefaultAsync(e => {% for im in line.key -%}
+                                                                    {%-if im.idx==1 -%}
+                                                                    e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                    {%if im.idx > 1 %}
+                                                                    && e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                {% endfor -%});
+            if (existed == null)
+            {
+                {% for im in line.data -%}
+                {%-if im.Column=="CreatedBy"%}
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedBy"%}
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                {%-endif -%}
+                {%-if im.Column=="CreatedDate"%}
+                entity.CreatedDate = DateTime.Now;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedDate"%}
+                entity.UpdatedDate = DateTime.Now;
+                {%-endif -%}
+                {% endfor %}
+                dbContext.Set<{{line.table}}>().Add(entity);
+            }
+            else
+            {
+                {% for im in line.data -%}
+                {%-if im.Column=="CreatedBy"%}
+                entity.CreatedBy = existed.CreatedBy;
+                {%-endif -%}
+                {%-if im.Column=="CreatedDate"%}
+                entity.CreatedDate = existed.CreatedDate;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedBy"%}
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                {%-endif -%}           
+                {%-if im.Column=="UpdatedDate"%}
+                entity.UpdatedDate = DateTime.Now;
+                {%-endif -%}
+                {% endfor %}
+                dbContext.Entry(existed).CurrentValues.SetValues(entity);
+            }
+        }
+        public async Task UpdateAsync({{line.table}} entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<{{line.table}}>().FirstOrDefaultAsync(e =>{% for im in line.key -%}
+                                                                    {%-if im.idx==1 -%}
+                                                                    e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                    {%if im.idx > 1 %}
+                                                                    && e.{{im.Column}} == entity.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                {% endfor -%});
+            if (existed != null)
+            {
+                {% for im in line.data -%}
+                {%-if im.Column=="CreatedBy"%}
+                entity.CreatedBy = existed.CreatedBy;
+                {%-endif -%}
+                {%-if im.Column=="CreatedDate"%}
+                entity.CreatedDate = existed.CreatedDate;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedBy"%}
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedDate"%}
+                entity.UpdatedDate = DateTime.Now;
+                {%-endif -%}
+                {% endfor %}
+                dbContext.Entry(existed).CurrentValues.SetValues(entity);
+            }
+        }
+        public async Task DeleteAsync({{line.table}} entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<{{line.table}}>().FirstOrDefaultAsync(e =>{% for im in line.key -%}
+                                                                    {%-if im.idx==1 -%}
+                                                                    (e.{{im.Column}} == entity.{{im.Column}} ||entity.{{im.Column}} == default )
+                                                                    {%-endif -%}
+                                                                    {%if im.idx > 1 %}
+                                                                    && (e.{{im.Column}} == entity.{{im.Column}} ||entity.{{im.Column}} == default)
+                                                                    {%-endif -%}
+                                                                {% endfor -%});
+            if (existed != null)
+            {
+                dbContext.Set<{{line.table}}>().Remove(existed);
+            }
+        }
+        public Task AddOrUpdateAsync(IEnumerable<{{line.table}}> entities, CancellationToken cancellationToken = default)
+        {
+            Expression<Func<{{line.table}}, object>> keySelector = (e => new {
+                                                                    {% for im in line.key -%}
+                                                                    {%-if im.idx==1 -%}
+                                                                    e.{{im.Column}} 
+                                                                    {%-endif -%}
+                                                                    {%if im.idx > 1 %}
+                                                                    , e.{{im.Column}}
+                                                                    {%-endif -%}
+                                                                {% endfor -%}
+                                                                } );
+            
+            {%-if line.change > 0 %} 
+            foreach(var entity in entities)
+            {      
+                if({% for im in line.key -%} {%-if im.idx==1 -%} entity.{{im.Column}} == default  {%-if im.kdl=='int' -%} || entity.{{im.Column}} <= 0 {%-endif -%}{%-endif -%} {%if im.idx > 1 %}|| entity.{{im.Column}} == default {%-if im.kdl=='int' -%} || entity.{{im.Column}} <= 0 {%-endif -%}{%-endif -%}{% endfor -%} {% for im in line.data -%} {%-if 'unique' in im.Column.lower()%} || entity.{{im.Column}} == default {%-endif -%}{% endfor -%})  
+                {
+                    {% for im in line.data -%}
+                    {%-if im.Column=="CreatedBy"%}
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedBy"%}
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="CreatedDate"%}
+                    entity.CreatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedDate"%}
+                    entity.UpdatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {% endfor %}
+                }
+                else
+                {
+                    {% for im in line.data -%}
+                    {%-if im.Column=="UpdatedBy"%}
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedDate"%}
+                    entity.UpdatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {% endfor %}
+                }
+           
+            }
+            {%-endif %}
+            return AddOrUpdateAsync(entities, keySelector, cancellationToken);
+        }
+        public Task BulkAddAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
+        {
+            {%-if line.change > 0 %} 
+            foreach (var entity in entities)
+            {
+                {% for im in line.data -%}
+                {%-if im.Column=="CreatedBy"%}
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				{%-endif -%}
+				{%-if im.Column=="CreatedDate"%}
+				entity.CreatedDate = DateTime.Now;
+				{%-endif -%}
+                {% endfor %}
+            }
+            {%-endif %}
+            return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
+        }
+        public Task BulkUpdateAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        {
+            foreach (var entity in entities)
+            {
+                {% for im in line.data -%}
+                {%-if im.Column=="UpdatedBy"%}
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                {%-endif -%}
+                {%-if im.Column=="UpdatedDate"%}
+                entity.UpdatedDate = DateTime.Now;
+                {%-endif -%}
+                {% endfor %}
+            }
+            return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
+        }
+
+        public Task BulkDeleteAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        {
+            if(!entities.Any())  return Task.CompletedTask ;
+            return _bulkOperation.BulkDeleteAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
+        }
+
+        public Task BulkAddOrUpdateAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        {
+            {%-if line.change > 0 %} 
+            foreach (var entity in entities)
+            {
+                if({% for im in line.key -%} {%-if im.idx==1 -%} entity.{{im.Column}} == default {%-if im.kdl=='int' -%} || entity.{{im.Column}} <= 0 {%-endif -%} {%-endif -%} {%if im.idx > 1 %}|| entity.{{im.Column}} == default  {%-if im.kdl=='int' -%} || entity.{{im.Column}} <= 0 {%-endif -%}{%-endif -%}{% endfor -%} {% for im in line.data -%} {%-if 'unique' in im.Column.lower()%} || entity.{{im.Column}} == default {%-endif -%}{% endfor -%})  
+                {
+                    {% for im in line.data -%}
+                    {%-if im.Column=="CreatedBy"%}
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedBy"%}
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="CreatedDate"%}
+                    entity.CreatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedDate"%}
+                    entity.UpdatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {% endfor %}
+                }
+                else
+                {
+                    {% for im in line.data -%}
+                    {%-if im.Column=="UpdatedBy"%}
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    {%-endif -%}
+                    {%-if im.Column=="UpdatedDate"%}
+                    entity.UpdatedDate = DateTime.Now;
+                    {%-endif -%}
+                    {% endfor %}
+                }
+
+            }
+            {%-endif %}
+            return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
+        }
+        {% endif %}
+        {% endfor %}
+    }
+}

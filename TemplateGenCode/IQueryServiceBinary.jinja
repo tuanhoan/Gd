@@ -1,0 +1,21 @@
+using GD.Entity.Tables;
+using GD.Data.Models.Views;
+using GD.SDK.Data;
+using GD.SDK.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace GD.Data.Services.Interface
+{
+    public partial interface IQueryServiceBinary : IAsyncQuery
+    {
+       {% for line in item -%}
+       Task<{{line.table}}> GetModelAsync({{line.table}} query, CancellationToken cancellationToken = default);
+       Task<List<{{line.table}}>> QueryListAsync({{line.table}} query, CancellationToken cancellationToken = default);
+       Task<bool> ExistsAsync({{line.table}} entity, CancellationToken cancellationToken = default); 
+       {% endfor %}
+    }
+}

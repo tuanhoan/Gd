@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c759ad54-3576-44b9-a0ab-1ca2adffe435": {
+      "ProjectGuid": "c759ad54-3576-44b9-a0ab-1ca2adffe435",
+      "DisplayName": "GD.API",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "df9f5f2a-3511-4375-81c0-4c82dc8b82eb": {
+      "ProjectGuid": "df9f5f2a-3511-4375-81c0-4c82dc8b82eb",
+      "DisplayName": "GD.Entity",
+      "ColorIndex": 0
+    },
+    "c759ad54-3576-44b9-a0ab-1ca2adffe435": {
+      "ProjectGuid": "c759ad54-3576-44b9-a0ab-1ca2adffe435",
+      "DisplayName": "GD.API",
+      "ColorIndex": 1
+    },
+    "76c07b94-a323-4566-b931-379f893662e6": {
+      "ProjectGuid": "76c07b94-a323-4566-b931-379f893662e6",
+      "DisplayName": "GD.Conventions",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

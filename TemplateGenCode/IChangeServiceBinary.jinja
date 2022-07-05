@@ -1,0 +1,33 @@
+using GD.Data.Models;
+using GD.Data.Models.Contact;
+using GD.Data.Models.Queries;
+using GD.Entity.Tables;
+using GD.SDK.Data;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using GD.Data.Models.Project;
+using GD.SDK.Models;
+
+namespace GD.Data.Services.Interface
+{
+	public partial interface IChangeServiceBinary : IAsyncChange, IUnitOfWork
+	{
+        {% for line in item -%}
+        {%-if line.key|length> 0-%}
+		Task<bool> ExistsAsync({{line.table}} entity, CancellationToken cancellationToken = default);
+        Task AddAsync({{line.table}} entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync({{line.table}} entity, CancellationToken cancellationToken = default);
+        Task UpdateAsync({{line.table}} entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync(IEnumerable<{{line.table}}> entities, CancellationToken cancellationToken = default);
+        Task DeleteAsync({{line.table}} entity, CancellationToken cancellationToken = default);
+        Task BulkAddAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkUpdateAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkDeleteAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkAddOrUpdateAsync(IList<{{line.table}}> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        {% endif %}
+        {% endfor %}
+	}
+}

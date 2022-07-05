@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\GD.Data.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\GD.Data.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net6.0\InfoTeam.Data.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\InfoTeam.Data.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\InfoTeam.Data.deps.json" />
+    <Content Include="bin\Debug\net6.0\InfoTeam.Data.runtimeconfig.json" />
+    <Content Include="obj\Debug\net6.0\GD.Data.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\net6.0\InfoTeam.Data.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\GD.Data.csproj.nuget.dgspec.json" />
+    <Content Include="obj\InfoTeam.Data.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GD.Conventions\GD.Conventions.csproj" />
+    <ProjectReference Include="..\GD.Entity\GD.Entity.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\InfoTeam.Conventions.dll" />
+    <None Include="bin\Debug\net6.0\InfoTeam.Conventions.pdb" />
+    <None Include="bin\Debug\net6.0\InfoTeam.Data.dll" />
+    <None Include="bin\Debug\net6.0\InfoTeam.Data.pdb" />
+    <None Include="bin\Debug\net6.0\InfoTeam.Entity.dll" />
+    <None Include="bin\Debug\net6.0\InfoTeam.Entity.pdb" />
+    <None Include="bin\Debug\net6.0\ref\InfoTeam.Data.dll" />
+    <None Include="obj\Debug\net6.0\GD.Data.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\GD.Data.assets.cache" />
+    <None Include="obj\Debug\net6.0\GD.Data.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\GD.Data.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\GD.Data.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.assets.cache" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.csproj.CopyComplete" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.dll" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net6.0\InfoTeam.Data.pdb" />
+    <None Include="obj\Debug\net6.0\ref\InfoTeam.Data.dll" />
+    <None Include="obj\GD.Data.csproj.nuget.g.props" />
+    <None Include="obj\GD.Data.csproj.nuget.g.targets" />
+    <None Include="obj\InfoTeam.Data.csproj.nuget.g.props" />
+    <None Include="obj\InfoTeam.Data.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+</Project>

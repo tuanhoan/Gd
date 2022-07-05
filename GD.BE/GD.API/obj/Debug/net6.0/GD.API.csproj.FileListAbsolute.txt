@@ -1,0 +1,6 @@
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.csproj.AssemblyReference.cache
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.AssemblyInfoInputs.cache
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.AssemblyInfo.cs
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.csproj.CoreCompileInputs.cache
+D:\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.MvcApplicationPartsAssemblyInfo.cache
