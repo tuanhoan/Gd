@@ -14,7 +14,7 @@ namespace GD.Entity.Tables
         public int? Test { get; set; }
         public int? Choice { get; set; }
 
-        public Test Test { get; set; }
-        public QuestionChoice QuestionChoice { get; set; }
+        public Test Tests { get; set; }
+        public QuestionChoice QuestionChoices { get; set; }
     }
 }

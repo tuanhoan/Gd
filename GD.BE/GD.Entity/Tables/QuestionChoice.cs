@@ -22,7 +22,7 @@ namespace GD.Entity.Tables
         public string ImageUrl { get; set; }
         public bool? is_answer { get; set; }
 
-        public Question Question { get; set; }
+        public Question Questions { get; set; }
         public List<StudentTest> StudentTests { get; set; }
     }
 }

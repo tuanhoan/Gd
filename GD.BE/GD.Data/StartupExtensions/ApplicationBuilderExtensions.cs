@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
-using OGMC.Data.Helpers;
-using OGMC.Data.Services.Common;
 using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 
@@ -23,7 +21,7 @@ namespace OGMC.Data.StartupExtensions
                     try
                     {
                         //log error
-                        await DependencyInjection.GetService<IActivityService>().InsertError(exception);
+                        //await DependencyInjection.GetService<IActivityService>().InsertError(exception);
                     }
                     finally
                     {

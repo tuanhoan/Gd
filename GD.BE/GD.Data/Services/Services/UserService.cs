@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GD.Data.Interfaces;
 using GD.Entity.Responsitories;
-using GD.Entity.Table;
+using GD.Entity.Tables;
 using GD.Helpers;
 using GD.Requests;
 using GD.Responses;
@@ -10,18 +10,18 @@ namespace GD.Data.Services
 {
     public class UserService : IUserService
     {
-        private readonly TasksDbContext tasksDbContext;
+        private readonly GDContext _gDContext;
         private readonly ITokenService tokenService;
 
-        public UserService(TasksDbContext tasksDbContext, ITokenService tokenService)
+        public UserService(GDContext gDContext, ITokenService tokenService)
         {
-            this.tasksDbContext = tasksDbContext;
+            this._gDContext = gDContext;
             this.tokenService = tokenService;
         }
 
         public async Task<UserResponse> GetInfoAsync(int userId)
         {
-            var user = await tasksDbContext.Users.FindAsync(userId);
+            var user = await _gDContext.Users.FindAsync(userId);
 
             if (user == null)
             {
@@ -45,7 +45,7 @@ namespace GD.Data.Services
 
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
-            var user = tasksDbContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
+            var user = _gDContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
 
             if (user == null)
             {
@@ -82,16 +82,16 @@ namespace GD.Data.Services
 
         public async Task<LogoutResponse> LogoutAsync(int userId)
         {
-            var refreshToken = await tasksDbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == userId);
+            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == userId);
 
             if (refreshToken == null)
             {
                 return new LogoutResponse { Success = true };
             }
 
-            tasksDbContext.RefreshTokens.Remove(refreshToken);
+            _gDContext.RefreshTokens.Remove(refreshToken);
 
-            var saveResponse = await tasksDbContext.SaveChangesAsync();
+            var saveResponse = await _gDContext.SaveChangesAsync();
 
             if (saveResponse >= 0)
             {
@@ -104,7 +104,7 @@ namespace GD.Data.Services
 
         public async Task<SignupResponse> SignupAsync(SignupRequest signupRequest)
         {
-            var existingUser = await tasksDbContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
+            var existingUser = await _gDContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
 
             if (existingUser != null)
             {
@@ -151,7 +151,7 @@ namespace GD.Data.Services
 
             await tasksDbContext.Users.AddAsync(user);
 
-            var saveResponse = await tasksDbContext.SaveChangesAsync();
+            var saveResponse = await _gDContext.SaveChangesAsync();
 
             if (saveResponse >= 0)
             {

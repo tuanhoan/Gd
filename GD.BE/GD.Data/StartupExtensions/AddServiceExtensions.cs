@@ -1,11 +1,11 @@
-﻿using GD.Data.Services;
-using GD.Data.Services.Services;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using GD.Data.EFService;
-using GD.Metadata;
 using GD.Entity.Responsitories;
+using GD.SDK.Data.EFService;
+using GD.SDK.Metadata;
+using GD.Data.Services.Interface;
+using GD.Data.Services;
 
 namespace GD.Data.StartupExtensions
 {
@@ -14,12 +14,12 @@ namespace GD.Data.StartupExtensions
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IQueryService, QueryService>();
-            services.AddTransient<IService, Service>();
+            services.AddTransient<IChangeService, ChangeService>();
             services.AddDbContext<GDContext>(options =>
             {
                 options.UseSqlServer(
-               configuration.GetConnectionString("TasksDbContext"),
-               x => x.MigrationsAssembly("TaskApi.Entity"));
+               configuration.GetConnectionString("GDContext"),
+               x => x.MigrationsAssembly("GD.Entity"));
             });
             
             services.AddTransient<IBulkOperation, SqlServerBulkOperation>();

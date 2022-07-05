@@ -16,7 +16,7 @@ namespace GD.Entity.Tables
         public int Question { get; set; }
         public int? QuestionSequence { get; set; }
 
-        public Exam Exam { get; set; }
-        public Question Question { get; set; }
+        public Exam Exams { get; set; }
+        public Question Questions { get; set; }
     }
 }
