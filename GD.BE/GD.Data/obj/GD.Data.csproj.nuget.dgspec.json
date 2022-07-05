@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj": {}
+    "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj": {}
   },
   "projects": {
-    "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
+    "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj",
+        "projectUniqueName": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj",
         "projectName": "GD.Conventions",
-        "projectPath": "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj",
-        "packagesPath": "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\",
-        "outputPath": "D:\\gd\\GD.BE\\GD.Conventions\\obj\\",
+        "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AES-QuyetChien.Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,25 +58,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj": {
+    "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
+        "projectUniqueName": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
         "projectName": "GD.Data",
-        "projectPath": "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
-        "packagesPath": "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\",
-        "outputPath": "D:\\gd\\GD.BE\\GD.Data\\obj\\",
+        "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AES-QuyetChien.Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -92,11 +90,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
-                "projectPath": "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj"
+              "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
+                "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj"
               },
-              "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
-                "projectPath": "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj"
+              "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
+                "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj"
               }
             }
           }
@@ -149,25 +147,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
+    "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj",
+        "projectUniqueName": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj",
         "projectName": "GD.Entity",
-        "projectPath": "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj",
-        "packagesPath": "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\",
-        "outputPath": "D:\\gd\\GD.BE\\GD.Entity\\obj\\",
+        "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AES-QuyetChien.Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -182,8 +179,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj": {
-                "projectPath": "D:\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj"
+              "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj": {
+                "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj"
               }
             }
           }
@@ -236,25 +233,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj": {
+    "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj",
+        "projectUniqueName": "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj",
         "projectName": "GD.SDK",
-        "projectPath": "D:\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj",
-        "packagesPath": "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\",
-        "outputPath": "D:\\gd\\GD.BE\\GD.SDK\\obj\\",
+        "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\GD.SDK.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.SDK\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AES-QuyetChien.Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -333,7 +329,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

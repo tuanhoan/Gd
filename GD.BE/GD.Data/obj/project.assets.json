@@ -8778,25 +8778,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
+      "projectUniqueName": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
       "projectName": "GD.Data",
-      "projectPath": "D:\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
-      "packagesPath": "C:\\Users\\AES-QuyetChien.Le\\.nuget\\packages\\",
-      "outputPath": "D:\\gd\\GD.BE\\GD.Data\\obj\\",
+      "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\GD.Data.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\AES-QuyetChien.Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8811,11 +8809,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
-              "projectPath": "D:\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj"
+            "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj": {
+              "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Conventions\\GD.Conventions.csproj"
             },
-            "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
-              "projectPath": "D:\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj"
+            "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj": {
+              "projectPath": "E:\\TeamFreelance\\gd\\GD.BE\\GD.Entity\\GD.Entity.csproj"
             }
           }
         }
@@ -8868,7 +8866,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
