@@ -5,7 +5,22 @@
       "ProjectGuid": "c759ad54-3576-44b9-a0ab-1ca2adffe435",
       "DisplayName": "GD.API",
       "ColorIndex": 0
+    },
+    "a91da277-b602-49ac-9e1d-f1d0494641eb": {
+      "ProjectGuid": "a91da277-b602-49ac-9e1d-f1d0494641eb",
+      "DisplayName": "GD.Data",
+      "ColorIndex": 1
+    },
+    "391940aa-71a3-45db-bd91-2088646ce896": {
+      "ProjectGuid": "391940aa-71a3-45db-bd91-2088646ce896",
+      "DisplayName": "GD.SDK",
+      "ColorIndex": 2
+    },
+    "df9f5f2a-3511-4375-81c0-4c82dc8b82eb": {
+      "ProjectGuid": "df9f5f2a-3511-4375-81c0-4c82dc8b82eb",
+      "DisplayName": "GD.Entity",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 4
 }

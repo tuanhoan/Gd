@@ -4,6 +4,7 @@ using GD.Entity.Responsitories;
 using GD.Helpers;
 using GD.Responses;
 using GD.Requests;
+using GD.Entity.Tables;
 
 namespace GD.Data.Services
 {
