@@ -1,0 +1,12 @@
+D:\AES\GD\GD.Entity\bin\Debug\net6.0\GD.Entity.deps.json
+D:\AES\GD\GD.Entity\bin\Debug\net6.0\GD.Entity.dll
+D:\AES\GD\GD.Entity\bin\Debug\net6.0\ref\GD.Entity.dll
+D:\AES\GD\GD.Entity\bin\Debug\net6.0\GD.Entity.pdb
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.csproj.AssemblyReference.cache
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.GeneratedMSBuildEditorConfig.editorconfig
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.AssemblyInfoInputs.cache
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.AssemblyInfo.cs
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.csproj.CoreCompileInputs.cache
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.dll
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\ref\GD.Entity.dll
+D:\AES\GD\GD.Entity\obj\Debug\net6.0\GD.Entity.pdb

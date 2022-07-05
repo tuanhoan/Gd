@@ -1,0 +1,14 @@
+D:\AES\GD\GD.SDK\bin\Debug\net6.0\GD.SDK.deps.json
+D:\AES\GD\GD.SDK\bin\Debug\net6.0\GD.SDK.runtimeconfig.json
+D:\AES\GD\GD.SDK\bin\Debug\net6.0\GD.SDK.dll
+D:\AES\GD\GD.SDK\bin\Debug\net6.0\ref\GD.SDK.dll
+D:\AES\GD\GD.SDK\bin\Debug\net6.0\GD.SDK.pdb
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.csproj.AssemblyReference.cache
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.GeneratedMSBuildEditorConfig.editorconfig
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.AssemblyInfoInputs.cache
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.AssemblyInfo.cs
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.csproj.CoreCompileInputs.cache
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.dll
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\ref\GD.SDK.dll
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.pdb
+D:\AES\GD\GD.SDK\obj\Debug\net6.0\GD.SDK.genruntimeconfig.cache

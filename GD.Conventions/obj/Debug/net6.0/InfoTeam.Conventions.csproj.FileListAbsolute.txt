@@ -1,0 +1,11 @@
+D:\AES\GD\GD.Conventions\bin\Debug\net6.0\GD.Conventions.deps.json
+D:\AES\GD\GD.Conventions\bin\Debug\net6.0\GD.Conventions.dll
+D:\AES\GD\GD.Conventions\bin\Debug\net6.0\ref\GD.Conventions.dll
+D:\AES\GD\GD.Conventions\bin\Debug\net6.0\GD.Conventions.pdb
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.GeneratedMSBuildEditorConfig.editorconfig
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.AssemblyInfoInputs.cache
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.AssemblyInfo.cs
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.csproj.CoreCompileInputs.cache
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.dll
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\ref\GD.Conventions.dll
+D:\AES\GD\GD.Conventions\obj\Debug\net6.0\GD.Conventions.pdb
