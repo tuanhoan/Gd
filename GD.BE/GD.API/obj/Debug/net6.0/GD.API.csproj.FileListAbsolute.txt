@@ -101,3 +101,4 @@ E:\TeamFreelance\gd\GD.BE\GD.API\obj\Debug\net6.0\refint\GD.API.dll
 E:\TeamFreelance\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.pdb
 E:\TeamFreelance\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.genruntimeconfig.cache
 E:\TeamFreelance\gd\GD.BE\GD.API\obj\Debug\net6.0\ref\GD.API.dll
+E:\TeamFreelance\gd\GD.BE\GD.API\obj\Debug\net6.0\GD.API.MvcApplicationPartsAssemblyInfo.cs

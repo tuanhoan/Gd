@@ -13,12 +13,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NgZorroAntdModule } from './ng-zorro-antd.module';
+import { ProfileComponent } from './profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +36,13 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
-    NzLayoutModule,
-    NzMenuModule
+    NgZorroAntdModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider,
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
