@@ -2,16 +2,17 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/GD.BE/GD.API/bin/Debug/net6.0
-/GD.BE/GD.API/obj/Debug/net6.0/ref
-/GD.BE/GD.API/obj/Debug/net6.0/refint
+/GD.BE/GD.API/bin/Debug/net6.0/
+/GD.BE/GD.API/obj/Debug/net6.0/ref/
+/GD.BE/GD.API/obj/Debug/net6.0/refint/
 *.exe
-/GD.BE/GD.Conventions/bin/Debug/net6.0
-/GD.BE/GD.Conventions/obj/Debug/net6.0/ref
-/GD.BE/GD.Conventions/obj/Debug/net6.0/refint
-/GD.BE/GD.Data/bin/Debug/net6.0
-/GD.BE/GD.Data/obj/Debug/net6.0/ref
-/GD.BE/GD.Data/obj/Debug/net6.0/refint
-/GD.BE/GD.Entity/bin/Debug/net6.0
-/GD.BE/GD.Entity/obj/Debug/net6.0/ref
-/GD.BE/GD.Entity/obj/Debug/net6.0/refint
+/GD.BE/GD.Conventions/bin/Debug/net6.0/
+/GD.BE/GD.Conventions/obj/Debug/net6.0/ref/
+/GD.BE/GD.Conventions/obj/Debug/net6.0/refint/
+/GD.BE/GD.Data/bin/Debug/net6.0/
+/GD.BE/GD.Data/obj/Debug/net6.0/ref/
+/GD.BE/GD.Data/obj/Debug/net6.0/refint/
+GD.BE\GD\GD.Entity\bin
+GD.BE\GD\GD.Entity\obj
+/GD.BE/GD.Entity/obj/Debug/net6.0/refint/
+GD.BE\.vs\
