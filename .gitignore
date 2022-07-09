@@ -1,18 +1,16 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+/.idea
+/*/.idea/
+/*/.vs/
+/**/*.db
+/**/*.log
+/**/bin/
+/**/obj/
+/**/node_modules/
+/src/ICOBiometricsApi/.vs/
+/src/ICOBiometricsApi/.vs/ICOBiometricsApi/v16/TestStore/
 
-/GD.BE/GD.API/bin/Debug/net6.0/
-/GD.BE/GD.API/obj/Debug/net6.0/ref/
-/GD.BE/GD.API/obj/Debug/net6.0/refint/
-*.exe
-/GD.BE/GD.Conventions/bin/Debug/net6.0/
-/GD.BE/GD.Conventions/obj/Debug/net6.0/ref/
-/GD.BE/GD.Conventions/obj/Debug/net6.0/refint/
-/GD.BE/GD.Data/bin/Debug/net6.0/
-/GD.BE/GD.Data/obj/Debug/net6.0/ref/
-/GD.BE/GD.Data/obj/Debug/net6.0/refint/
-GD.BE\GD\GD.Entity\bin
-GD.BE\GD\GD.Entity\obj
-/GD.BE/GD.Entity/obj/Debug/net6.0/refint/
-GD.BE\.vs\
+# Visual Studio 2015 cache/options directory
+.vs/
+.vscode/
+.idea/
+src/EngageApi/EngageApi.sln.DotSettings.user
