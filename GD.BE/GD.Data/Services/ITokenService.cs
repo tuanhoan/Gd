@@ -1,6 +1,8 @@
 ﻿using GD.Entity.Tables;
 using GD.Requests;
 using GD.Responses;
+using System;
+using System.Threading.Tasks;
 
 namespace GD.Data.Interfaces
 {

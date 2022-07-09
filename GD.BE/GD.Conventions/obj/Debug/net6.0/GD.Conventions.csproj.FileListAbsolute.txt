@@ -1,0 +1,12 @@
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\bin\Debug\net6.0\GD.Conventions.deps.json
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\bin\Debug\net6.0\GD.Conventions.dll
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\bin\Debug\net6.0\GD.Conventions.pdb
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.csproj.AssemblyReference.cache
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.GeneratedMSBuildEditorConfig.editorconfig
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.AssemblyInfoInputs.cache
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.AssemblyInfo.cs
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.csproj.CoreCompileInputs.cache
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.dll
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\refint\GD.Conventions.dll
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\GD.Conventions.pdb
+E:\TeamFreelance\gd\GD.BE\GD.Conventions\obj\Debug\net6.0\ref\GD.Conventions.dll

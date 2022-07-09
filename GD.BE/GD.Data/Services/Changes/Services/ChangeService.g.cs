@@ -40,10 +40,8 @@ namespace GD.Data.Services
         }
         public async Task AddAsync(Class entity, CancellationToken cancellationToken = default)
         {
-
             
             await dbContext.Set<Class>().AddAsync(entity);
-            
         }
         public async Task AddOrUpdateAsync(Class entity, CancellationToken cancellationToken = default)
         {

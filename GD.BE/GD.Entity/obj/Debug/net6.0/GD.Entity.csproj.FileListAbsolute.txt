@@ -1,0 +1,17 @@
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.Entity.deps.json
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.Entity.runtimeconfig.json
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.Entity.dll
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.Entity.pdb
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.SDK.dll
+E:\TeamFreelance\gd\GD.BE\GD.Entity\bin\Debug\net6.0\GD.SDK.pdb
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.csproj.AssemblyReference.cache
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.GeneratedMSBuildEditorConfig.editorconfig
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.AssemblyInfoInputs.cache
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.AssemblyInfo.cs
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.csproj.CoreCompileInputs.cache
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.csproj.CopyComplete
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.dll
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\refint\GD.Entity.dll
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.pdb
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\GD.Entity.genruntimeconfig.cache
+E:\TeamFreelance\gd\GD.BE\GD.Entity\obj\Debug\net6.0\ref\GD.Entity.dll

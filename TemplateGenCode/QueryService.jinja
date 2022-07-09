@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using GD.Entity.Responsitories;
-using GD.Data.Services.Common;
 using GD.SDK.Data.EFService;
 using System;
 using System.Collections.Generic;
@@ -18,14 +17,9 @@ namespace GD.Data.Services
     {
 
       protected readonly ILogger<QueryService> _logger;
-      private readonly IWorkContext _workContext;
-      private readonly ICommonService _commonService;
-      public QueryService(IServiceProvider serviceProvider, ILogger<QueryService> logger, IWorkContext workContext,
-          ICommonService commonService) : base(serviceProvider)
+      public QueryService(IServiceProvider serviceProvider, ILogger<QueryService> logger) : base(serviceProvider)
       {
          _logger = logger;
-         _workContext = workContext;
-         _commonService = commonService;
       }
 
       {% for line in item -%}

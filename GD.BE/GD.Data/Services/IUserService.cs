@@ -1,5 +1,6 @@
 ﻿using GD.Requests;
 using GD.Responses;
+using System.Threading.Tasks;
 
 namespace GD.Data.Interfaces
 {

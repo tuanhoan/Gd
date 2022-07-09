@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 using GD.Data.Services.Interface;
 using GD.Entity.Tables;
 using Microsoft.Extensions.Logging;
-using GD.Data.Services.Common;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using GD.SDK.EFService;
@@ -24,18 +22,14 @@ namespace GD.Data.Services
 	{
 
 	    protected readonly ILogger<ChangeService> _logger;
-		protected readonly ICommonService _commonService;
 		private readonly IQueryService _queryService;
-		private readonly IWorkContext _workContext;
         private readonly IActionContextAccessor _actionContextAccessor;
 
         public ChangeService(IServiceProvider serviceProvider, IBulkOperation bulkOperation,
-			ILogger<ChangeService> logger, ICommonService commonService, IQueryService queryService, IWorkContext workContext, IActionContextAccessor actionContextAccessor) : base(serviceProvider, bulkOperation)
+			ILogger<ChangeService> logger ,IQueryService queryService,  IActionContextAccessor actionContextAccessor) : base(serviceProvider, bulkOperation)
 		{
 			_logger = logger;
-			_commonService = commonService;
 			_queryService = queryService;
-			_workContext = workContext;
             _actionContextAccessor = actionContextAccessor;
 
         }

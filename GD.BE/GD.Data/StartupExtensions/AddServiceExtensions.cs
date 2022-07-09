@@ -17,7 +17,7 @@ namespace GD.Data.StartupExtensions
             services.AddTransient<IChangeService, ChangeService>();
             services.AddDbContext<GDContext>(options =>
             {
-                options.UseSqlServer(
+               options.UseSqlServer(
                configuration.GetConnectionString("GDContext"),
                x => x.MigrationsAssembly("GD.Entity"));
             });

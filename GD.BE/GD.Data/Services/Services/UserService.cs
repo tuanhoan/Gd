@@ -5,6 +5,9 @@ using GD.Entity.Tables;
 using GD.Helpers;
 using GD.Requests;
 using GD.Responses;
+using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 namespace GD.Data.Services
 {
@@ -39,7 +42,6 @@ namespace GD.Data.Services
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                CreationDate = user.Ts
             };
         }
 
@@ -68,14 +70,14 @@ namespace GD.Data.Services
                 };
             }
 
-            var token = await System.Threading.Tasks.Task.Run(() => tokenService.GenerateTokensAsync(user.Id));
+            var token = await System.Threading.Tasks.Task.Run(() => tokenService.GenerateTokensAsync(user.id));
 
             return new TokenResponse
             {
                 Success = true,
                 AccessToken = token.Item1,
                 RefreshToken = token.Item2,
-                UserId = user.Id,
+                UserId = user.id,
                 FirstName = user.FirstName
             };
         }
@@ -145,7 +147,6 @@ namespace GD.Data.Services
                 PasswordSalt = Convert.ToBase64String(salt),
                 FirstName = signupRequest.FirstName,
                 LastName = signupRequest.LastName,
-                Ts = signupRequest.Ts,
                 Active = true // You can save is false and send confirmation email to the user, then once the user confirms the email you can make it true
             };
 

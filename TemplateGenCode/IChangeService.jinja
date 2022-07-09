@@ -1,19 +1,14 @@
-using GD.Data.Models;
-using GD.Data.Models.Contact;
-using GD.Data.Models.Queries;
 using GD.Entity.Tables;
 using GD.SDK.Data;
+using GD.SDK.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using GD.Data.Models.Project;
-using GD.SDK.Models;
 
 namespace GD.Data.Services.Interface
 {
-	public partial interface IChangeService : IAsyncChange, IUnitOfWork
+    public partial interface IChangeService : IAsyncChange, IUnitOfWork
 	{
         {% for line in item -%}
         {%-if line.key|length> 0-%}

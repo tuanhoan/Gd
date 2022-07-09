@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "GD.SDK.SDK/1.0.0": {
+      "GD.SDK/1.0.0": {
         "dependencies": {
           "EFCore.BulkExtensions": "6.5.2",
           "EntityFramework": "6.4.4",
@@ -19,7 +19,7 @@
           "System.Linq.Dynamic.Core": "1.2.19"
         },
         "runtime": {
-          "GD.SDK.SDK.dll": {}
+          "GD.SDK.dll": {}
         }
       },
       "Azure.Core/1.6.0": {
@@ -1893,7 +1893,7 @@
     }
   },
   "libraries": {
-    "GD.SDK.SDK/1.0.0": {
+    "GD.SDK/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

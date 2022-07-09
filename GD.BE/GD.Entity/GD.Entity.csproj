@@ -4,6 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
@@ -16,7 +22,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Functions\" />
-    <Folder Include="Models\" />
     <Folder Include="Procedures\" />
     <Folder Include="Properties\" />
     <Folder Include="ViewEntities\" />

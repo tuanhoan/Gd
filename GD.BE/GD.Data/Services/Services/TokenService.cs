@@ -5,6 +5,9 @@ using GD.Helpers;
 using GD.Responses;
 using GD.Requests;
 using GD.Entity.Tables;
+using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace GD.Data.Services
 {
@@ -23,7 +26,7 @@ namespace GD.Data.Services
             var accessToken = await TokenHelper.GenerateAccessToken(userId);
             var refreshToken = await TokenHelper.GenerateRefreshToken();
 
-            var userRecord = await _gDContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == userId);
+            var userRecord = await _gDContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.id == userId);
 
             if (userRecord == null)
             {
@@ -42,7 +45,6 @@ namespace GD.Data.Services
             userRecord.RefreshTokens?.Add(new RefreshToken
             {
                 ExpiryDate = DateTime.Now.AddDays(14),
-                Ts = DateTime.Now,
                 UserId = userId,
                 TokenHash = refreshTokenHashed,
                 TokenSalt = Convert.ToBase64String(salt)
@@ -58,7 +60,7 @@ namespace GD.Data.Services
 
         public async Task<bool> RemoveRefreshTokenAsync(User user)
         {
-            var userRecord = await _gDContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.Id == user.Id);
+            var userRecord = await _gDContext.Users.Include(o => o.RefreshTokens).FirstOrDefaultAsync(e => e.id == user.id);
 
             if (userRecord == null)
             {

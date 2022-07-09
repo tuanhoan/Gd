@@ -357,7 +357,7 @@ namespace GD.Data.Services
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
                            &&(query.Username == default || e.Username.Contains(query.Username))   
-                           &&(query.PasswordHash == default || e.PasswordHash.Contains(query.PasswordHash))   
+                           &&(query.PasswordSalt == default || e.PasswordSalt.Contains(query.PasswordSalt))   
                            &&(query.CreateDate == default || e.CreateDate == query.CreateDate)   
                            &&(query.status == default || e.status == query.status)   
                            &&(query.information == default || e.information == query.information)   
