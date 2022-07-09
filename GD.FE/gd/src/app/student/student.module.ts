@@ -3,9 +3,7 @@ import { IconsProviderModule } from '../icons-provider.module';
 import { NgZorroAntdModule } from '../ng-zorro-antd.module';
 import {  StudentRoutingModule } from './student-routing.module';
 import {  StudentComponent } from './student.component';
-
-
-import { WelcomeComponent } from './welcomeStudent/welcomeStudent.component';
+import { WelcomeStudentComponent } from './welcomeStudent/welcomeStudent.component';
 
 
 @NgModule({
@@ -14,8 +12,8 @@ import { WelcomeComponent } from './welcomeStudent/welcomeStudent.component';
     IconsProviderModule
   ],
   declarations: [StudentComponent,
-    WelcomeComponent],
+    WelcomeStudentComponent],
   exports: [StudentComponent,
-    WelcomeComponent]
+    WelcomeStudentComponent]
 })
 export class StudentModule { }

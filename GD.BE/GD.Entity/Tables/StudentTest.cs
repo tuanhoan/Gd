@@ -11,7 +11,7 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int? Test { get; set; }
+        public int? TestFId { get; set; }
         public int? Choice { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }

@@ -4,8 +4,13 @@ import { TeacherComponent } from './teacher.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', component: TeacherComponent },
-  { path: 'welcome', component: WelcomeComponent }
+  {
+      path: 'giaovien',
+      component: TeacherComponent,
+      children: [
+          { path: 'welcome', component: WelcomeComponent }
+      ]
+  }
 ];
 
 @NgModule({

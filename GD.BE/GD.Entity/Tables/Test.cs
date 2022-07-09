@@ -16,8 +16,8 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int? Exam { get; set; }
-        public int? Student { get; set; }
+        public int? ExamFId { get; set; }
+        public int? StudentFId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? TestingTime { get; set; }
         public Guid? UniqueId { get; set; }

@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'page', loadChildren: () => import('./student/student.module').then(m => m.StudentModule) }
+  { path: 'sinhvien', loadChildren: () => import('./student/student.module').then(m => m.StudentModule) },
+  { path: 'giaovien', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule) }
 ];
 
 @NgModule({

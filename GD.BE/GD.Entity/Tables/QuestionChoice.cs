@@ -16,7 +16,7 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int? Question { get; set; }
+        public int? QuestionFId { get; set; }
         public string content { get; set; }
         [MaxLength(200)]
         public string ImageUrl { get; set; }

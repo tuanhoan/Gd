@@ -10,17 +10,17 @@ namespace GD.Entity.Tables
     {
         [Key]
         [Column(Order = 1)]
-        public int Exam { get; set; }
+        public int ExamId { get; set; }
         [Key]
         [Column(Order = 2)]
-        public int Question { get; set; }
+        public int QuestionId { get; set; }
         public int? QuestionSequence { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedBy { get; set; }
 
-        public Exam Exam { get; set; }
-        public Question Question { get; set; }
+        public Exam Exams { get; set; }
+        public Question Questions { get; set; }
     }
 }
