@@ -1,14 +1,14 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+/.idea
+/*/.idea/
+/*/.vs/
+/**/*.db
+/**/*.log
+/**/bin/
+/**/obj/
+/**/node_modules/
 
-/GD.BE/GD.API/bin
-/GD.BE/GD.API/obj
-*.exe
-/GD.BE/GD.Conventions/obj
-/GD.BE/GD.Data/bin
-/GD.BE/GD.Data/obj
-/GD.BE/GD.Entity/bin
+# Visual Studio 2015 cache/options directory
+.vs/
+.vscode/
+.idea/
 
-/GD.BE/GD.Conventions/bin/Debug/net6.0
-/GD.BE/GD.Entity/obj/Debug/net6.0
