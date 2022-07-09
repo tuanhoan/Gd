@@ -19,8 +19,9 @@ namespace GD.Entity.Tables
         public string LastName { get; set; }
         [MaxLength(250)]
         public string Email { get; set; }
-        [MaxLength(50)]
+        [MaxLength(225)]
         public string Password { get; set; }
+        [MaxLength(225)]
         public string PasswordSalt { get; set; }
         public DateTime? CreateDate { get; set; }
         public int? status { get; set; }
