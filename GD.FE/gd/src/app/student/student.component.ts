@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.less']
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.less']
 })
-export class PageComponent implements OnInit {
+export class StudentComponent implements OnInit {
   isCollapsed = false;
   constructor() { }
 

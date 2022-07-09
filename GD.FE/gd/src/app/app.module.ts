@@ -19,6 +19,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { TeacherModule } from './teacher/teacher.module';
+import { StudentModule } from './student/student.module';
 
 registerLocaleData(en);
 
@@ -36,7 +38,9 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    TeacherModule,
+    StudentModule
   ],
   providers: [
     AuthInterceptorProvider,
