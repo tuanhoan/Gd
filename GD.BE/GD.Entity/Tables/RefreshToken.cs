@@ -10,13 +10,19 @@ namespace GD.Entity.Tables
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public int UserId { get; set; }
+        public int id { get; set; }
+        public int? User_id { get; set; }
         [MaxLength(1000)]
         public string TokenHash { get; set; }
         [MaxLength(1000)]
         public string TokenSalt { get; set; }
-        public DateTime TS { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public DateTime? TS { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
+
+        public User User { get; set; }
     }
 }

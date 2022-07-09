@@ -29,6 +29,9 @@ namespace GD.Data.Services.Interface
        Task<QuestionChoice> GetModelAsync(QuestionChoice query, CancellationToken cancellationToken = default);
        Task<List<QuestionChoice>> QueryListAsync(QuestionChoice query, CancellationToken cancellationToken = default);
        Task<bool> ExistsAsync(QuestionChoice entity, CancellationToken cancellationToken = default); 
+       Task<RefreshToken> GetModelAsync(RefreshToken query, CancellationToken cancellationToken = default);
+       Task<List<RefreshToken>> QueryListAsync(RefreshToken query, CancellationToken cancellationToken = default);
+       Task<bool> ExistsAsync(RefreshToken entity, CancellationToken cancellationToken = default); 
        Task<Student> GetModelAsync(Student query, CancellationToken cancellationToken = default);
        Task<List<Student>> QueryListAsync(Student query, CancellationToken cancellationToken = default);
        Task<bool> ExistsAsync(Student entity, CancellationToken cancellationToken = default); 

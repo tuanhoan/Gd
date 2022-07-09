@@ -17,6 +17,10 @@ namespace GD.Entity.Tables
         [MaxLength(20)]
         public string SchoolYear { get; set; }
         public Guid? UniqueId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
         public MilitaryInformation MilitaryInformation { get; set; }
     }

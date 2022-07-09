@@ -23,6 +23,10 @@ namespace GD.Entity.Tables
         [MaxLength(200)]
         public string SubjectName { get; set; }
         public int? QuestionLevel { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
         public List<ExamQuestion> ExamQuestions { get; set; }
         public List<QuestionChoice> QuestionChoices { get; set; }

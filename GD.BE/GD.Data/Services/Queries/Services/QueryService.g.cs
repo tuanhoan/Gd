@@ -32,6 +32,10 @@ namespace GD.Data.Services
                            &&(query.ClassName == default || e.ClassName.Contains(query.ClassName))   
                            &&(query.SchoolYear == default || e.SchoolYear.Contains(query.SchoolYear))   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.MilitaryInformation == default || e.MilitaryInformation == query.MilitaryInformation)   
                            
                         )
@@ -68,6 +72,10 @@ namespace GD.Data.Services
                            &&(query.Duration == default || e.Duration == query.Duration)   
                            &&(query.term == default || e.term.Contains(query.term))   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.MilitaryInformation == default || e.MilitaryInformation == query.MilitaryInformation)   
                            &&(query.ExamQuestions == default || e.ExamQuestions == query.ExamQuestions)   
                            &&(query.Tests == default || e.Tests == query.Tests)   
@@ -103,8 +111,12 @@ namespace GD.Data.Services
                            (query.Exam == default || e.Exam == query.Exam)   
                            &&(query.Question == default || e.Question == query.Question)   
                            &&(query.QuestionSequence == default || e.QuestionSequence == query.QuestionSequence)   
-                           &&(query.Exams == default || e.Exams == query.Exams)   
-                           &&(query.Questions == default || e.Questions == query.Questions)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.Exam == default || e.Exam == query.Exam)   
+                           &&(query.Question == default || e.Question == query.Question)   
                            
                         )
                         .Select(x => x);
@@ -113,7 +125,7 @@ namespace GD.Data.Services
       {
          return await dbContext.Set<ExamQuestion>()
                         .AsNoTracking()
-                        .FirstOrDefaultAsync(e => e.Exam == query.Exam
+                        .FirstOrDefaultAsync(e => 
                            ,cancellationToken);
       }
       public async Task<List<ExamQuestion>> QueryListAsync(ExamQuestion query, CancellationToken cancellationToken = default)
@@ -143,10 +155,14 @@ namespace GD.Data.Services
                            &&(query.Image == default || e.Image.Contains(query.Image))   
                            &&(query.PhoneNumber == default || e.PhoneNumber.Contains(query.PhoneNumber))   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
-                           &&(query.Users == default || e.Users == query.Users)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.Classes == default || e.Classes == query.Classes)   
                            &&(query.Exams == default || e.Exams == query.Exams)   
                            &&(query.Students == default || e.Students == query.Students)   
+                           &&(query.Users == default || e.Users == query.Users)   
                            
                         )
                         .Select(x => x);
@@ -181,6 +197,10 @@ namespace GD.Data.Services
                            &&(query.ImageUrl == default || e.ImageUrl.Contains(query.ImageUrl))   
                            &&(query.SubjectName == default || e.SubjectName.Contains(query.SubjectName))   
                            &&(query.QuestionLevel == default || e.QuestionLevel == query.QuestionLevel)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.ExamQuestions == default || e.ExamQuestions == query.ExamQuestions)   
                            &&(query.QuestionChoices == default || e.QuestionChoices == query.QuestionChoices)   
                            
@@ -217,7 +237,11 @@ namespace GD.Data.Services
                            &&(query.content == default || e.content.Contains(query.content))   
                            &&(query.ImageUrl == default || e.ImageUrl.Contains(query.ImageUrl))   
                            &&(query.is_answer == default || e.is_answer == query.is_answer)   
-                           &&(query.Questions == default || e.Questions == query.Questions)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.Question == default || e.Question == query.Question)   
                            &&(query.StudentTests == default || e.StudentTests == query.StudentTests)   
                            
                         )
@@ -243,6 +267,46 @@ namespace GD.Data.Services
                            (query.id == default || e.id == query.id),cancellationToken);
       }
 
+       protected IQueryable<RefreshToken> Filter(RefreshToken query, CancellationToken cancellationToken = default)
+      {
+         return dbContext.Set<RefreshToken>()
+                        .AsNoTracking()
+                        .Where(e => 
+                           (query.id == default || e.id == query.id)   
+                           &&(query.User_id == default || e.User_id == query.User_id)   
+                           &&(query.TokenHash == default || e.TokenHash.Contains(query.TokenHash))   
+                           &&(query.TokenSalt == default || e.TokenSalt.Contains(query.TokenSalt))   
+                           &&(query.TS == default || e.TS == query.TS)   
+                           &&(query.ExpiryDate == default || e.ExpiryDate == query.ExpiryDate)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.User == default || e.User == query.User)   
+                           
+                        )
+                        .Select(x => x);
+      }
+      public async Task<RefreshToken> GetModelAsync(RefreshToken query, CancellationToken cancellationToken = default)
+      {
+         return await dbContext.Set<RefreshToken>()
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(e => 
+                           (query.id == default || e.id == query.id)&&(query.User_id == default || e.User_id == query.User_id),cancellationToken);
+      }
+      public async Task<List<RefreshToken>> QueryListAsync(RefreshToken query, CancellationToken cancellationToken = default)
+      {
+         return await Filter(query, cancellationToken)
+				.ToListAsync(cancellationToken);
+      }
+      public async Task<bool> ExistsAsync(RefreshToken query, CancellationToken cancellationToken = default)
+      {
+         return await dbContext.Set<RefreshToken>()
+                        .AsNoTracking()
+                        .AnyAsync(e => 
+                           (query.id == default || e.id == query.id)&&(query.User_id == default || e.User_id == query.User_id),cancellationToken);
+      }
+
        protected IQueryable<Student> Filter(Student query, CancellationToken cancellationToken = default)
       {
          return dbContext.Set<Student>()
@@ -252,6 +316,10 @@ namespace GD.Data.Services
                            &&(query.Class == default || e.Class == query.Class)   
                            &&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode))   
                            &&(query.StudentInformation == default || e.StudentInformation == query.StudentInformation)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.MilitaryInformation == default || e.MilitaryInformation == query.MilitaryInformation)   
                            &&(query.Tests == default || e.Tests == query.Tests)   
                            
@@ -286,8 +354,12 @@ namespace GD.Data.Services
                            (query.id == default || e.id == query.id)   
                            &&(query.Test == default || e.Test == query.Test)   
                            &&(query.Choice == default || e.Choice == query.Choice)   
-                           &&(query.Tests == default || e.Tests == query.Tests)   
-                           &&(query.QuestionChoices == default || e.QuestionChoices == query.QuestionChoices)   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.Test == default || e.Test == query.Test)   
+                           &&(query.QuestionChoice == default || e.QuestionChoice == query.QuestionChoice)   
                            
                         )
                         .Select(x => x);
@@ -323,8 +395,11 @@ namespace GD.Data.Services
                            &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
                            &&(query.TestingTime == default || e.TestingTime == query.TestingTime)   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
-                           &&(query.Exams == default || e.Exams == query.Exams)   
-                           &&(query.Students == default || e.Students == query.Students)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.Exam == default || e.Exam == query.Exam)   
+                           &&(query.Student == default || e.Student == query.Student)   
                            &&(query.StudentTests == default || e.StudentTests == query.StudentTests)   
                            
                         )
@@ -357,12 +432,23 @@ namespace GD.Data.Services
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
                            &&(query.Username == default || e.Username.Contains(query.Username))   
-                           &&(query.PasswordSalt == default || e.PasswordSalt.Contains(query.PasswordSalt))   
+                           &&(query.PasswordHash == default || e.PasswordHash.Contains(query.PasswordHash))   
                            &&(query.CreateDate == default || e.CreateDate == query.CreateDate)   
                            &&(query.status == default || e.status == query.status)   
                            &&(query.information == default || e.information == query.information)   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
+                           &&(query.Password == default || e.Password.Contains(query.Password))   
+                           &&(query.PasswordSalt == default || e.PasswordSalt.Contains(query.PasswordSalt))   
+                           &&(query.Active == default || e.Active == query.Active)   
+                           &&(query.FirstName == default || e.FirstName.Contains(query.FirstName))   
+                           &&(query.LastName == default || e.LastName.Contains(query.LastName))   
+                           &&(query.Email == default || e.Email.Contains(query.Email))   
+                           &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
+                           &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
+                           &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
+                           &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
                            &&(query.MilitaryInformation == default || e.MilitaryInformation == query.MilitaryInformation)   
+                           &&(query.RefreshTokens == default || e.RefreshTokens == query.RefreshTokens)   
                            
                         )
                         .Select(x => x);

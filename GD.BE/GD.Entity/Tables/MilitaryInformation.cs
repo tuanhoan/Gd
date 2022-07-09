@@ -5,15 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GD.Entity.Tables
 {
-    [Table("MilitaryInformation")]
+    [Table("luongSA.MilitaryInformation")]
     public partial class MilitaryInformation
     {
         public MilitaryInformation()
         {
-            this.Users = new List<User>();
             this.Classes = new List<Class>();
             this.Exams = new List<Exam>();
             this.Students = new List<Student>();
+            this.Users = new List<User>();
         }
 
         [Key]
@@ -34,10 +34,14 @@ namespace GD.Entity.Tables
         [MaxLength(50)]
         public string PhoneNumber { get; set; }
         public Guid? UniqueId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
-        public List<User> Users { get; set; }
         public List<Class> Classes { get; set; }
         public List<Exam> Exams { get; set; }
         public List<Student> Students { get; set; }
+        public List<User> Users { get; set; }
     }
 }

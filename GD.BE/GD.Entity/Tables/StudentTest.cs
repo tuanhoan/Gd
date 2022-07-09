@@ -13,8 +13,12 @@ namespace GD.Entity.Tables
         public int id { get; set; }
         public int? Test { get; set; }
         public int? Choice { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
-        public Test Tests { get; set; }
-        public QuestionChoice QuestionChoices { get; set; }
+        public Test Test { get; set; }
+        public QuestionChoice QuestionChoice { get; set; }
     }
 }

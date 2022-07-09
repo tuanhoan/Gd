@@ -76,6 +76,17 @@ namespace GD.Data.Services.Interface
         Task BulkDeleteAsync(IList<QuestionChoice> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
         Task BulkAddOrUpdateAsync(IList<QuestionChoice> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
         
+        Task<bool> ExistsAsync(RefreshToken entity, CancellationToken cancellationToken = default);
+        Task AddAsync(RefreshToken entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync(RefreshToken entity, CancellationToken cancellationToken = default);
+        Task UpdateAsync(RefreshToken entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync(IEnumerable<RefreshToken> entities, CancellationToken cancellationToken = default);
+        Task DeleteAsync(RefreshToken entity, CancellationToken cancellationToken = default);
+        Task BulkAddAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkUpdateAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkDeleteAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkAddOrUpdateAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        
         Task<bool> ExistsAsync(Student entity, CancellationToken cancellationToken = default);
         Task AddAsync(Student entity, CancellationToken cancellationToken = default);
         Task AddOrUpdateAsync(Student entity, CancellationToken cancellationToken = default);

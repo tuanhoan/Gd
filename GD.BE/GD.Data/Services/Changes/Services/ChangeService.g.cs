@@ -40,8 +40,14 @@ namespace GD.Data.Services
         }
         public async Task AddAsync(Class entity, CancellationToken cancellationToken = default)
         {
+
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<Class>().AddAsync(entity);
+            
         }
         public async Task AddOrUpdateAsync(Class entity, CancellationToken cancellationToken = default)
         {
@@ -49,11 +55,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<Class>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -63,6 +77,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -77,11 +95,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<Class> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<Class, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<Class> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<Class> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -89,6 +131,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -100,7 +144,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<Class> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -113,6 +175,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<Exam>().AddAsync(entity);
             
         }
@@ -122,11 +188,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<Exam>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -136,6 +210,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -150,11 +228,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<Exam> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<Exam, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<Exam> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<Exam> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -162,6 +264,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -173,7 +277,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<Exam> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -187,6 +309,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<ExamQuestion>().AddAsync(entity);
             
         }
@@ -197,11 +323,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<ExamQuestion>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -212,6 +346,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -228,11 +366,35 @@ namespace GD.Data.Services
         {
             Expression<Func<ExamQuestion, object>> keySelector = (e => new {
                                                                     e.Exam
-                                                                    , e.Question} );
+                                                                    , e.Question} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.Exam == default|| entity.Exam <= 0|| entity.Question == default|| entity.Question <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<ExamQuestion> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<ExamQuestion> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -240,6 +402,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -251,7 +415,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<ExamQuestion> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.Exam == default|| entity.Exam <= 0|| entity.Question == default|| entity.Question <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -264,6 +446,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<MilitaryInformation>().AddAsync(entity);
             
         }
@@ -273,11 +459,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<MilitaryInformation>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -287,6 +481,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -301,11 +499,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<MilitaryInformation> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<MilitaryInformation, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -313,6 +535,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -324,7 +548,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -337,6 +579,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<Question>().AddAsync(entity);
             
         }
@@ -346,11 +592,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<Question>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -360,6 +614,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -374,11 +632,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<Question> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<Question, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<Question> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<Question> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -386,6 +668,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -397,7 +681,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<Question> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -410,6 +712,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<QuestionChoice>().AddAsync(entity);
             
         }
@@ -419,11 +725,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<QuestionChoice>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -433,6 +747,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -447,11 +765,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<QuestionChoice> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<QuestionChoice, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<QuestionChoice> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<QuestionChoice> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -459,6 +801,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -470,7 +814,158 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<QuestionChoice> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
+            return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
+        }
+        
+        public Task<bool> ExistsAsync(RefreshToken entity, CancellationToken cancellationToken = default)
         {
+            return this.dbContext.Set<RefreshToken>().AnyAsync(e => 
+                                                                e.id == entity.id, cancellationToken);
+        }
+        public async Task AddAsync(RefreshToken entity, CancellationToken cancellationToken = default)
+        {
+
+            
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            await dbContext.Set<RefreshToken>().AddAsync(entity);
+            
+        }
+        public async Task AddOrUpdateAsync(RefreshToken entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<RefreshToken>().FirstOrDefaultAsync(e => e.id == entity.id);
+            if (existed == null)
+            {
+                
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                dbContext.Set<RefreshToken>().Add(entity);
+            }
+            else
+            {
+                
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                dbContext.Entry(existed).CurrentValues.SetValues(entity);
+            }
+        }
+        public async Task UpdateAsync(RefreshToken entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<RefreshToken>().FirstOrDefaultAsync(e =>e.id == entity.id);
+            if (existed != null)
+            {
+                
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                dbContext.Entry(existed).CurrentValues.SetValues(entity);
+            }
+        }
+        public async Task DeleteAsync(RefreshToken entity, CancellationToken cancellationToken = default)
+        {
+            var existed = await dbContext.Set<RefreshToken>().FirstOrDefaultAsync(e =>(e.id == entity.id ||entity.id == default ));
+            if (existed != null)
+            {
+                dbContext.Set<RefreshToken>().Remove(existed);
+            }
+        }
+        public Task AddOrUpdateAsync(IEnumerable<RefreshToken> entities, CancellationToken cancellationToken = default)
+        {
+            Expression<Func<RefreshToken, object>> keySelector = (e => new {
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
+            return AddOrUpdateAsync(entities, keySelector, cancellationToken);
+        }
+        public Task BulkAddAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
+            return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
+        }
+        public Task BulkUpdateAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        {
+            foreach (var entity in entities)
+            {
+                
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            }
+            return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
+        }
+
+        public Task BulkDeleteAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        {
+            if(!entities.Any())  return Task.CompletedTask ;
+            return _bulkOperation.BulkDeleteAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
+        }
+
+        public Task BulkAddOrUpdateAsync(IList<RefreshToken> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -483,6 +978,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<Student>().AddAsync(entity);
             
         }
@@ -492,11 +991,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<Student>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -506,6 +1013,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -520,11 +1031,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<Student> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<Student, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<Student> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<Student> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -532,6 +1067,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -543,7 +1080,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<Student> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -556,6 +1111,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<StudentTest>().AddAsync(entity);
             
         }
@@ -565,11 +1124,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<StudentTest>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -579,6 +1146,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -593,11 +1164,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<StudentTest> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<StudentTest, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<StudentTest> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<StudentTest> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -605,6 +1200,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -616,7 +1213,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<StudentTest> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         
@@ -630,6 +1245,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<Test>().AddAsync(entity);
             
         }
@@ -640,12 +1258,18 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<Test>().Add(entity);
             }
             else
             {
                 
                 entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -656,6 +1280,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -677,10 +1304,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 }
                 else
                 {
                     
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 }
            
             }
@@ -692,6 +1324,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -700,6 +1333,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -718,10 +1353,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 }
                 else
                 {
                     
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 }
 
             }
@@ -737,6 +1377,10 @@ namespace GD.Data.Services
         {
 
             
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedDate = DateTime.Now;
+            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             await dbContext.Set<User>().AddAsync(entity);
             
         }
@@ -746,11 +1390,19 @@ namespace GD.Data.Services
             if (existed == null)
             {
                 
+                entity.CreatedDate = DateTime.Now;
+                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Set<User>().Add(entity);
             }
             else
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -760,6 +1412,10 @@ namespace GD.Data.Services
             if (existed != null)
             {
                 
+                entity.CreatedDate = existed.CreatedDate;
+                entity.CreatedBy = existed.CreatedBy;
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -774,11 +1430,35 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<User> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<User, object>> keySelector = (e => new {
-                                                                    e.id} );
+                                                                    e.id} ); 
+            foreach(var entity in entities)
+            {      
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+           
+            }
             return AddOrUpdateAsync(entities, keySelector, cancellationToken);
         }
         public Task BulkAddAsync(IList<User> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default) 
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                
+				entity.CreatedDate = DateTime.Now;
+				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         public Task BulkUpdateAsync(IList<User> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
@@ -786,6 +1466,8 @@ namespace GD.Data.Services
             foreach (var entity in entities)
             {
                 
+                entity.UpdatedDate = DateTime.Now;
+                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -797,7 +1479,25 @@ namespace GD.Data.Services
         }
 
         public Task BulkAddOrUpdateAsync(IList<User> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default)
-        {
+        { 
+            foreach (var entity in entities)
+            {
+                if(entity.id == default|| entity.id <= 0 || entity.UniqueId == default)  
+                {
+                    
+                    entity.CreatedDate = DateTime.Now;
+                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+                else
+                {
+                    
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                }
+
+            }
             return _bulkOperation.BulkAddOrUpdateAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
         

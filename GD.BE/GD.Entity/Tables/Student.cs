@@ -20,6 +20,10 @@ namespace GD.Entity.Tables
         [MaxLength(10)]
         public string StudentCode { get; set; }
         public int? StudentInformation { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
         public MilitaryInformation MilitaryInformation { get; set; }
         public List<Test> Tests { get; set; }

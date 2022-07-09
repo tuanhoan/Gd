@@ -21,8 +21,12 @@ namespace GD.Entity.Tables
         [MaxLength(200)]
         public string ImageUrl { get; set; }
         public bool? is_answer { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public int? UpdatedBy { get; set; }
 
-        public Question Questions { get; set; }
+        public Question Question { get; set; }
         public List<StudentTest> StudentTests { get; set; }
     }
 }
