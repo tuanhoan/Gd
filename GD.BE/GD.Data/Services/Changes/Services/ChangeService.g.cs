@@ -33,6 +33,10 @@ namespace GD.Data.Services
             _actionContextAccessor = actionContextAccessor;
 
         }
+        protected int GetUserID()
+        {
+             return dbContext.Users.FirstOrDefault(x=> x.Username == _actionContextAccessor.ActionContext.HttpContext.User.Identity.Name).id;
+        }
         public Task<bool> ExistsAsync(Class entity, CancellationToken cancellationToken = default)
         {
             return this.dbContext.Set<Class>().AnyAsync(e => 
@@ -43,9 +47,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<Class>().AddAsync(entity);
             
         }
@@ -56,9 +60,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<Class>().Add(entity);
             }
             else
@@ -67,7 +71,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -80,7 +84,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -102,15 +106,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -122,7 +126,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -132,7 +136,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -151,15 +155,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -176,9 +180,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<Exam>().AddAsync(entity);
             
         }
@@ -189,9 +193,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<Exam>().Add(entity);
             }
             else
@@ -200,7 +204,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -213,7 +217,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -235,15 +239,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -255,7 +259,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -265,7 +269,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -284,15 +288,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -302,31 +306,31 @@ namespace GD.Data.Services
         public Task<bool> ExistsAsync(ExamQuestion entity, CancellationToken cancellationToken = default)
         {
             return this.dbContext.Set<ExamQuestion>().AnyAsync(e => 
-                                                                e.Exam == entity.Exam
-                                                                    && e.Question == entity.Question, cancellationToken);
+                                                                e.ExamId == entity.ExamId
+                                                                    && e.QuestionId == entity.QuestionId, cancellationToken);
         }
         public async Task AddAsync(ExamQuestion entity, CancellationToken cancellationToken = default)
         {
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<ExamQuestion>().AddAsync(entity);
             
         }
         public async Task AddOrUpdateAsync(ExamQuestion entity, CancellationToken cancellationToken = default)
         {
-            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e => e.Exam == entity.Exam
-                                                                    && e.Question == entity.Question);
+            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e => e.ExamId == entity.ExamId
+                                                                    && e.QuestionId == entity.QuestionId);
             if (existed == null)
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<ExamQuestion>().Add(entity);
             }
             else
@@ -335,28 +339,28 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
         public async Task UpdateAsync(ExamQuestion entity, CancellationToken cancellationToken = default)
         {
-            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e =>e.Exam == entity.Exam
-                                                                    && e.Question == entity.Question);
+            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e =>e.ExamId == entity.ExamId
+                                                                    && e.QuestionId == entity.QuestionId);
             if (existed != null)
             {
                 
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
         public async Task DeleteAsync(ExamQuestion entity, CancellationToken cancellationToken = default)
         {
-            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e =>(e.Exam == entity.Exam ||entity.Exam == default )
-                                                                    && (e.Question == entity.Question ||entity.Question == default));
+            var existed = await dbContext.Set<ExamQuestion>().FirstOrDefaultAsync(e =>(e.ExamId == entity.ExamId ||entity.ExamId == default )
+                                                                    && (e.QuestionId == entity.QuestionId ||entity.QuestionId == default));
             if (existed != null)
             {
                 dbContext.Set<ExamQuestion>().Remove(existed);
@@ -365,23 +369,23 @@ namespace GD.Data.Services
         public Task AddOrUpdateAsync(IEnumerable<ExamQuestion> entities, CancellationToken cancellationToken = default)
         {
             Expression<Func<ExamQuestion, object>> keySelector = (e => new {
-                                                                    e.Exam
-                                                                    , e.Question} ); 
+                                                                    e.ExamId
+                                                                    , e.QuestionId} ); 
             foreach(var entity in entities)
             {      
-                if(entity.Exam == default|| entity.Exam <= 0|| entity.Question == default|| entity.Question <= 0)  
+                if(entity.ExamId == default|| entity.ExamId <= 0|| entity.QuestionId == default|| entity.QuestionId <= 0)  
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -393,7 +397,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -403,7 +407,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -418,19 +422,19 @@ namespace GD.Data.Services
         { 
             foreach (var entity in entities)
             {
-                if(entity.Exam == default|| entity.Exam <= 0|| entity.Question == default|| entity.Question <= 0)  
+                if(entity.ExamId == default|| entity.ExamId <= 0|| entity.QuestionId == default|| entity.QuestionId <= 0)  
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -447,9 +451,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<MilitaryInformation>().AddAsync(entity);
             
         }
@@ -460,9 +464,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<MilitaryInformation>().Add(entity);
             }
             else
@@ -471,7 +475,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -484,7 +488,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -506,15 +510,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -526,7 +530,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -536,7 +540,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -555,15 +559,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -580,9 +584,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<Question>().AddAsync(entity);
             
         }
@@ -593,9 +597,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<Question>().Add(entity);
             }
             else
@@ -604,7 +608,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -617,7 +621,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -639,15 +643,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -659,7 +663,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -669,7 +673,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -688,15 +692,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -713,9 +717,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<QuestionChoice>().AddAsync(entity);
             
         }
@@ -726,9 +730,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<QuestionChoice>().Add(entity);
             }
             else
@@ -737,7 +741,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -750,7 +754,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -772,15 +776,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -792,7 +796,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -802,7 +806,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -821,15 +825,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -846,9 +850,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<RefreshToken>().AddAsync(entity);
             
         }
@@ -859,9 +863,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<RefreshToken>().Add(entity);
             }
             else
@@ -870,7 +874,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -883,7 +887,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -905,15 +909,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -925,7 +929,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -935,7 +939,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -954,15 +958,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -979,9 +983,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<Student>().AddAsync(entity);
             
         }
@@ -992,9 +996,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<Student>().Add(entity);
             }
             else
@@ -1003,7 +1007,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1016,7 +1020,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1038,15 +1042,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -1058,7 +1062,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -1068,7 +1072,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -1087,15 +1091,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -1112,9 +1116,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<StudentTest>().AddAsync(entity);
             
         }
@@ -1125,9 +1129,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<StudentTest>().Add(entity);
             }
             else
@@ -1136,7 +1140,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1149,7 +1153,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1171,15 +1175,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -1191,7 +1195,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -1201,7 +1205,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -1220,15 +1224,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -1245,9 +1249,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<Test>().AddAsync(entity);
             
         }
@@ -1258,9 +1262,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<Test>().Add(entity);
             }
             else
@@ -1269,7 +1273,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1282,7 +1286,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1304,15 +1308,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -1324,7 +1328,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -1334,7 +1338,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -1353,15 +1357,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }
@@ -1378,9 +1382,9 @@ namespace GD.Data.Services
 
             
             entity.CreatedDate = DateTime.Now;
-            entity.CreatedBy = _workContext.CurrentUser.AccountId;
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             entity.UpdatedDate = DateTime.Now;
-            entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             await dbContext.Set<User>().AddAsync(entity);
             
         }
@@ -1391,9 +1395,9 @@ namespace GD.Data.Services
             {
                 
                 entity.CreatedDate = DateTime.Now;
-                entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Set<User>().Add(entity);
             }
             else
@@ -1402,7 +1406,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1415,7 +1419,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 entity.CreatedBy = existed.CreatedBy;
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 dbContext.Entry(existed).CurrentValues.SetValues(entity);
             }
         }
@@ -1437,15 +1441,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
            
             }
@@ -1457,7 +1461,7 @@ namespace GD.Data.Services
             {
                 
 				entity.CreatedDate = DateTime.Now;
-				entity.CreatedBy = _workContext.CurrentUser.AccountId;
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkAddAsync(dbContext,entities, bulkOptions, progress, cancellationToken);
         }
@@ -1467,7 +1471,7 @@ namespace GD.Data.Services
             {
                 
                 entity.UpdatedDate = DateTime.Now;
-                entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             }
             return _bulkOperation.BulkUpdateAsync(dbContext, entities, bulkOptions, progress, cancellationToken);
         }
@@ -1486,15 +1490,15 @@ namespace GD.Data.Services
                 {
                     
                     entity.CreatedDate = DateTime.Now;
-                    entity.CreatedBy = _workContext.CurrentUser.AccountId;
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
                 else
                 {
                     
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = _workContext.CurrentUser.AccountId;
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 }
 
             }

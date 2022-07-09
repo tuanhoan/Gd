@@ -47,7 +47,7 @@ namespace GD.Data.Services
 
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
-            var user = _gDContext.Users.SingleOrDefault(user => user.Active && user.Email == loginRequest.Email);
+            var user = _gDContext.Users.SingleOrDefault(user => user.Active== true && user.Email == loginRequest.Email);
 
             if (user == null)
             {
@@ -84,7 +84,7 @@ namespace GD.Data.Services
 
         public async Task<LogoutResponse> LogoutAsync(int userId)
         {
-            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == userId);
+            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.User_id == userId);
 
             if (refreshToken == null)
             {

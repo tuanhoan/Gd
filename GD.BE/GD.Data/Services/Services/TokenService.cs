@@ -45,7 +45,7 @@ namespace GD.Data.Services
             userRecord.RefreshTokens?.Add(new RefreshToken
             {
                 ExpiryDate = DateTime.Now.AddDays(14),
-                UserId = userId,
+                User_id = userId,
                 TokenHash = refreshTokenHashed,
                 TokenSalt = Convert.ToBase64String(salt)
 
@@ -79,7 +79,7 @@ namespace GD.Data.Services
 
         public async Task<ValidateRefreshTokenResponse> ValidateRefreshTokenAsync(RefreshTokenRequest refreshTokenRequest)
         {
-            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserId == refreshTokenRequest.UserId);
+            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.User_id == refreshTokenRequest.UserId);
 
             var response = new ValidateRefreshTokenResponse();
             if (refreshToken == null)
@@ -109,7 +109,7 @@ namespace GD.Data.Services
             }
 
             response.Success = true;
-            response.UserId = refreshToken.UserId;
+            response.UserId =(int) refreshToken.User_id;
 
             return response;
         }
