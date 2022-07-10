@@ -7,13 +7,18 @@ import { WelcomeStudentComponent } from './welcomeStudent/welcomeStudent.compone
 
 
 @NgModule({
-  imports: [StudentRoutingModule,
+  imports: [
+    StudentRoutingModule,
     NgZorroAntdModule,
     IconsProviderModule
   ],
-  declarations: [StudentComponent,
-    WelcomeStudentComponent],
-  exports: [StudentComponent,
-    WelcomeStudentComponent]
+  declarations: [
+    StudentComponent,
+    WelcomeStudentComponent
+  ],
+  exports: [
+    StudentComponent,
+    WelcomeStudentComponent
+  ]
 })
 export class StudentModule { }

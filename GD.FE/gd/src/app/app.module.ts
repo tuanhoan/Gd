@@ -21,6 +21,8 @@ import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TeacherModule } from './teacher/teacher.module';
 import { StudentModule } from './student/student.module';
+import { TeacherComponent } from './teacher/teacher.component';
+import { StudentComponent } from './student/student.component';
 
 registerLocaleData(en);
 
@@ -29,7 +31,9 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    TeacherComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
