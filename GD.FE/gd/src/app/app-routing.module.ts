@@ -4,13 +4,24 @@ import { AuthGuard } from './helpers/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'sinhvien', loadChildren: () => import('./student/student.module').then(m => m.StudentModule) },
-  { path: 'giaovien', loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule) }
+  {
+    path: 'giaovien',
+    component: TeacherComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'sinhvien',
+    component: StudentComponent,
+    // canActivate: [AuthGuard]
+  },
+
 ];
 
 @NgModule({
