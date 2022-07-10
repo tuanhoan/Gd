@@ -1,5 +1,0 @@
-D:\AES\GD\GD.SDK.SDK\obj\Debug\net6.0\GD.SDK.SDK.csproj.AssemblyReference.cache
-D:\AES\GD\GD.SDK.SDK\obj\Debug\net6.0\GD.SDK.SDK.GeneratedMSBuildEditorConfig.editorconfig
-D:\AES\GD\GD.SDK.SDK\obj\Debug\net6.0\GD.SDK.SDK.AssemblyInfoInputs.cache
-D:\AES\GD\GD.SDK.SDK\obj\Debug\net6.0\GD.SDK.SDK.AssemblyInfo.cs
-D:\AES\GD\GD.SDK.SDK\obj\Debug\net6.0\GD.SDK.SDK.csproj.CoreCompileInputs.cache
