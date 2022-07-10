@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
-    let isLoggedIn = this.tokenService.isLoggedIn();
-    console.log(`isLoggedIn: ${isLoggedIn}`);
-    if (isLoggedIn) {
-      this.isLoggedIn = true;
+    // let isLoggedIn = this.tokenService.isLoggedIn();
+    // console.log(`isLoggedIn: ${isLoggedIn}`);
+    // if (isLoggedIn) {
+    //   this.isLoggedIn = true;
 
-      this.router.navigate(['/']);
-    }
+    //   this.router.navigate(['/']);
+    // }
   }
 
   onSubmit(): void {

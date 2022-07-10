@@ -31,9 +31,7 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent,
-    TeacherComponent,
-    StudentComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
