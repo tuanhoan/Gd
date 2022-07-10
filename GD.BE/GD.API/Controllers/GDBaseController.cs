@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GD.Data.Services.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -8,6 +9,15 @@ namespace GD.API.Controllers
     [ApiController]
     public class GDBaseController : ControllerBase
     {
+        private IChangeService _changeService;
+        private IQueryService _queryService;
+
+        public GDBaseController(IChangeService changeService, IQueryService queryService)
+        {
+            _changeService = changeService;
+            _queryService = queryService;
+        }
+
         protected int UserID => int.Parse(FindClaim(ClaimTypes.NameIdentifier));
         private string FindClaim(string claimName)
         {
