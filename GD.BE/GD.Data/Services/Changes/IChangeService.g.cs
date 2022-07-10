@@ -43,6 +43,16 @@ namespace GD.Data.Services.Interface
         Task BulkDeleteAsync(IList<ExamQuestion> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
         Task BulkAddOrUpdateAsync(IList<ExamQuestion> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
         
+        Task<bool> ExistsAsync(MilitaryInformation entity, CancellationToken cancellationToken = default);
+        Task AddAsync(MilitaryInformation entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync(MilitaryInformation entity, CancellationToken cancellationToken = default);
+        Task UpdateAsync(MilitaryInformation entity, CancellationToken cancellationToken = default);
+        Task AddOrUpdateAsync(IEnumerable<MilitaryInformation> entities, CancellationToken cancellationToken = default);
+        Task DeleteAsync(MilitaryInformation entity, CancellationToken cancellationToken = default);
+        Task BulkAddAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkUpdateAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkDeleteAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
+        Task BulkAddOrUpdateAsync(IList<MilitaryInformation> entities, BulkOptions bulkOptions = null, Action<decimal> progress = null, CancellationToken cancellationToken = default);
         
         Task<bool> ExistsAsync(Question entity, CancellationToken cancellationToken = default);
         Task AddAsync(Question entity, CancellationToken cancellationToken = default);

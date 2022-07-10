@@ -4,22 +4,22 @@ using GD.Requests;
 using GD.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GD.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : GDBaseController
+    public class UsersController : ControllerBase
     {
         private readonly IUserService userService;
         private readonly ITokenService tokenService;
-
-        public UsersController(IChangeService changeService, IQueryService queryService, IUserService userService, ITokenService tokenService) : base(changeService, queryService)
+        protected int UserID => int.Parse(FindClaim(ClaimTypes.NameIdentifier));
+        public UsersController( IUserService userService, ITokenService tokenService)
         {
             this.userService = userService;
             this.tokenService = tokenService;
         }
-
 
         [HttpPost]
         [Route("login")]
@@ -111,6 +111,7 @@ namespace GD.API.Controllers
             {
                 return UnprocessableEntity(logout);
             }
+            
 
             return Ok();
         }
@@ -128,6 +129,23 @@ namespace GD.API.Controllers
             }
 
             return Ok(userResponse);
+
+        }
+
+
+        private string FindClaim(string claimName)
+        {
+
+            var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+
+            var claim = claimsIdentity.FindFirst(claimName);
+
+            if (claim == null)
+            {
+                return null;
+            }
+
+            return claim.Value;
 
         }
     }

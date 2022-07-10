@@ -8,24 +8,30 @@ using GD.Responses;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using GD.SDK.EFService;
+using GD.SDK.Data.EFService;
 
 namespace GD.Data.Services
 {
 
-    public class UserService : IUserService
+    public class UserService : EfChange<GDContext>, IUserService
     {
-        private readonly GDContext _gDContext;
         private readonly ITokenService tokenService;
 
-        public UserService(GDContext gDContext, ITokenService tokenService)
+        public UserService(IServiceProvider serviceProvider, IBulkOperation bulkOperation, ITokenService tokenService) : base(serviceProvider, bulkOperation)
         {
-            this._gDContext = gDContext;
             this.tokenService = tokenService;
         }
 
+        //public UserService(GDContext gDContext)
+        //{
+        //    this.dbContext = gDContext;
+        //    this.tokenService = tokenService;
+        //}
+
         public async Task<UserResponse> GetInfoAsync(int userId)
         {
-            var user = await _gDContext.Users.FindAsync(userId);
+            var user = await dbContext.Users.FindAsync(userId);
 
             if (user == null)
             {
@@ -48,7 +54,7 @@ namespace GD.Data.Services
 
         public async Task<TokenResponse> LoginAsync(LoginRequest loginRequest)
         {
-            var user = _gDContext.Users.SingleOrDefault(user => user.Active== true && user.Email == loginRequest.Email);
+            var user = dbContext.Users.SingleOrDefault(user => user.Active== true && user.Email == loginRequest.Email);
 
             if (user == null)
             {
@@ -85,16 +91,16 @@ namespace GD.Data.Services
 
         public async Task<LogoutResponse> LogoutAsync(int userId)
         {
-            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserFId == userId);
+            var refreshToken = await dbContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserFId == userId);
 
             if (refreshToken == null)
             {
                 return new LogoutResponse { Success = true };
             }
 
-            _gDContext.RefreshTokens.Remove(refreshToken);
+           await DeleteAsync(refreshToken);
 
-            var saveResponse = await _gDContext.SaveChangesAsync();
+            var saveResponse =await SaveAsync();
 
             if (saveResponse >= 0)
             {
@@ -107,7 +113,7 @@ namespace GD.Data.Services
 
         public async Task<SignupResponse> SignupAsync(SignupRequest signupRequest)
         {
-            var existingUser = await _gDContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
+            var existingUser = await dbContext.Users.SingleOrDefaultAsync(user => user.Email == signupRequest.Email);
 
             if (existingUser != null)
             {
@@ -151,9 +157,9 @@ namespace GD.Data.Services
                 Active = true // You can save is false and send confirmation email to the user, then once the user confirms the email you can make it true
             };
 
-            await _gDContext.Users.AddAsync(user);
+            await AddAsync(user);
 
-            var saveResponse = await _gDContext.SaveChangesAsync();
+            var saveResponse = await SaveAsync();
 
             if (saveResponse >= 0)
             {

@@ -57,10 +57,10 @@ namespace GD.Data.Services
 
             {% for im in line.data -%}
             {%-if im.Column=="CreatedBy"%}
-            entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
+            entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
             {%-endif -%}
             {%-if im.Column=="UpdatedBy"%}
-            entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+            entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
             {%-endif -%}
             {%-if im.Column=="CreatedDate"%}
             entity.CreatedDate = DateTime.Now;
@@ -86,10 +86,10 @@ namespace GD.Data.Services
             {
                 {% for im in line.data -%}
                 {%-if im.Column=="CreatedBy"%}
-                entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
+                entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                 {%-endif -%}
                 {%-if im.Column=="UpdatedBy"%}
-                entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 {%-endif -%}
                 {%-if im.Column=="CreatedDate"%}
                 entity.CreatedDate = DateTime.Now;
@@ -110,7 +110,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 {%-endif -%}
                 {%-if im.Column=="UpdatedBy"%}
-                entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 {%-endif -%}           
                 {%-if im.Column=="UpdatedDate"%}
                 entity.UpdatedDate = DateTime.Now;
@@ -139,7 +139,7 @@ namespace GD.Data.Services
                 entity.CreatedDate = existed.CreatedDate;
                 {%-endif -%}
                 {%-if im.Column=="UpdatedBy"%}
-                entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 {%-endif -%}
                 {%-if im.Column=="UpdatedDate"%}
                 entity.UpdatedDate = DateTime.Now;
@@ -183,10 +183,10 @@ namespace GD.Data.Services
                 {
                     {% for im in line.data -%}
                     {%-if im.Column=="CreatedBy"%}
-                    entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="UpdatedBy"%}
-                    entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="CreatedDate"%}
                     entity.CreatedDate = DateTime.Now;
@@ -200,7 +200,7 @@ namespace GD.Data.Services
                 {
                     {% for im in line.data -%}
                     {%-if im.Column=="UpdatedBy"%}
-                    entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="UpdatedDate"%}
                     entity.UpdatedDate = DateTime.Now;
@@ -219,7 +219,7 @@ namespace GD.Data.Services
             {
                 {% for im in line.data -%}
                 {%-if im.Column=="CreatedBy"%}
-				entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
+				entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
 				{%-endif -%}
 				{%-if im.Column=="CreatedDate"%}
 				entity.CreatedDate = DateTime.Now;
@@ -235,7 +235,7 @@ namespace GD.Data.Services
             {
                 {% for im in line.data -%}
                 {%-if im.Column=="UpdatedBy"%}
-                entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                 {%-endif -%}
                 {%-if im.Column=="UpdatedDate"%}
                 entity.UpdatedDate = DateTime.Now;
@@ -260,10 +260,10 @@ namespace GD.Data.Services
                 {
                     {% for im in line.data -%}
                     {%-if im.Column=="CreatedBy"%}
-                    entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.CreatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="UpdatedBy"%}
-                    entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="CreatedDate"%}
                     entity.CreatedDate = DateTime.Now;
@@ -277,7 +277,7 @@ namespace GD.Data.Services
                 {
                     {% for im in line.data -%}
                     {%-if im.Column=="UpdatedBy"%}
-                    entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.UpdatedBy = GetUserID()== default ? 1 : GetUserID();
                     {%-endif -%}
                     {%-if im.Column=="UpdatedDate"%}
                     entity.UpdatedDate = DateTime.Now;
