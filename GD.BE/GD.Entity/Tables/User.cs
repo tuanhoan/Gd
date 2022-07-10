@@ -22,7 +22,7 @@ namespace GD.Entity.Tables
         public string PasswordHash { get; set; }
         public DateTime CreateDate { get; set; }
         public int? status { get; set; }
-        public int? information { get; set; }
+        public int? MilitaryInformationFId { get; set; }
         public Guid? UniqueId { get; set; }
         [MaxLength(225)]
         public string Password { get; set; }

@@ -84,7 +84,7 @@ namespace GD.Data.Services
 
         public async Task<LogoutResponse> LogoutAsync(int userId)
         {
-            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.User_id == userId);
+            var refreshToken = await _gDContext.RefreshTokens.FirstOrDefaultAsync(o => o.UserFId == userId);
 
             if (refreshToken == null)
             {

@@ -11,7 +11,7 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int? User_id { get; set; }
+        public int? UserFId { get; set; }
         [MaxLength(1000)]
         public string TokenHash { get; set; }
         [MaxLength(1000)]

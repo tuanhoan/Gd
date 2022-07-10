@@ -11,7 +11,7 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int? TeacherInfo { get; set; }
+        public int? MilitaryInformationFId { get; set; }
         [MaxLength(50)]
         public string ClassName { get; set; }
         [MaxLength(20)]

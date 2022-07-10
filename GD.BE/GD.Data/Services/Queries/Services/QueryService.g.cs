@@ -28,7 +28,7 @@ namespace GD.Data.Services
                         .AsNoTracking()
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
-                           &&(query.TeacherInfo == default || e.TeacherInfo == query.TeacherInfo)   
+                           &&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)   
                            &&(query.ClassName == default || e.ClassName.Contains(query.ClassName))   
                            &&(query.SchoolYear == default || e.SchoolYear.Contains(query.SchoolYear))   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
@@ -46,7 +46,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Class>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
       public async Task<List<Class>> QueryListAsync(Class query, CancellationToken cancellationToken = default)
       {
@@ -58,7 +58,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Class>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
 
        protected IQueryable<Exam> Filter(Exam query, CancellationToken cancellationToken = default)
@@ -67,7 +67,7 @@ namespace GD.Data.Services
                         .AsNoTracking()
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
-                           &&(query.Teacher == default || e.Teacher == query.Teacher)   
+                           &&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)   
                            &&(query.SubjectName == default || e.SubjectName.Contains(query.SubjectName))   
                            &&(query.Duration == default || e.Duration == query.Duration)   
                            &&(query.term == default || e.term.Contains(query.term))   
@@ -88,7 +88,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Exam>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
       public async Task<List<Exam>> QueryListAsync(Exam query, CancellationToken cancellationToken = default)
       {
@@ -100,7 +100,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Exam>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
 
        protected IQueryable<ExamQuestion> Filter(ExamQuestion query, CancellationToken cancellationToken = default)
@@ -108,15 +108,15 @@ namespace GD.Data.Services
          return dbContext.Set<ExamQuestion>()
                         .AsNoTracking()
                         .Where(e => 
-                           (query.ExamId == default || e.ExamId == query.ExamId)   
-                           &&(query.QuestionId == default || e.QuestionId == query.QuestionId)   
+                           (query.ExamFId == default || e.ExamFId == query.ExamFId)   
+                           &&(query.QuestionFId == default || e.QuestionFId == query.QuestionFId)   
                            &&(query.QuestionSequence == default || e.QuestionSequence == query.QuestionSequence)   
                            &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
                            &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
                            &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
                            &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
-                           &&(query.Exams == default || e.Exams == query.Exams)   
-                           &&(query.Questions == default || e.Questions == query.Questions)   
+                           &&(query.Exam == default || e.Exam == query.Exam)   
+                           &&(query.Question == default || e.Question == query.Question)   
                            
                         )
                         .Select(x => x);
@@ -126,7 +126,7 @@ namespace GD.Data.Services
          return await dbContext.Set<ExamQuestion>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.ExamId == default || e.ExamId == query.ExamId)&&(query.QuestionId == default || e.QuestionId == query.QuestionId),cancellationToken);
+                           (query.ExamFId == default || e.ExamFId == query.ExamFId)&&(query.QuestionFId == default || e.QuestionFId == query.QuestionFId),cancellationToken);
       }
       public async Task<List<ExamQuestion>> QueryListAsync(ExamQuestion query, CancellationToken cancellationToken = default)
       {
@@ -138,7 +138,7 @@ namespace GD.Data.Services
          return await dbContext.Set<ExamQuestion>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.ExamId == default || e.ExamId == query.ExamId)&&(query.QuestionId == default || e.QuestionId == query.QuestionId),cancellationToken);
+                           (query.ExamFId == default || e.ExamFId == query.ExamFId)&&(query.QuestionFId == default || e.QuestionFId == query.QuestionFId),cancellationToken);
       }
 
        protected IQueryable<MilitaryInformation> Filter(MilitaryInformation query, CancellationToken cancellationToken = default)
@@ -273,7 +273,7 @@ namespace GD.Data.Services
                         .AsNoTracking()
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
-                           &&(query.User_id == default || e.User_id == query.User_id)   
+                           &&(query.UserFId == default || e.UserFId == query.UserFId)   
                            &&(query.TokenHash == default || e.TokenHash.Contains(query.TokenHash))   
                            &&(query.TokenSalt == default || e.TokenSalt.Contains(query.TokenSalt))   
                            &&(query.TS == default || e.TS == query.TS)   
@@ -292,7 +292,7 @@ namespace GD.Data.Services
          return await dbContext.Set<RefreshToken>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.User_id == default || e.User_id == query.User_id),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.UserFId == default || e.UserFId == query.UserFId),cancellationToken);
       }
       public async Task<List<RefreshToken>> QueryListAsync(RefreshToken query, CancellationToken cancellationToken = default)
       {
@@ -304,7 +304,7 @@ namespace GD.Data.Services
          return await dbContext.Set<RefreshToken>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.User_id == default || e.User_id == query.User_id),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.UserFId == default || e.UserFId == query.UserFId),cancellationToken);
       }
 
        protected IQueryable<Student> Filter(Student query, CancellationToken cancellationToken = default)
@@ -315,7 +315,7 @@ namespace GD.Data.Services
                            (query.id == default || e.id == query.id)   
                            &&(query.Class == default || e.Class == query.Class)   
                            &&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode))   
-                           &&(query.StudentInformation == default || e.StudentInformation == query.StudentInformation)   
+                           &&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)   
                            &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
                            &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
                            &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
@@ -331,7 +331,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Student>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode)),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode))&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId),cancellationToken);
       }
       public async Task<List<Student>> QueryListAsync(Student query, CancellationToken cancellationToken = default)
       {
@@ -343,7 +343,7 @@ namespace GD.Data.Services
          return await dbContext.Set<Student>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode)),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.StudentCode == default || e.StudentCode.Contains(query.StudentCode))&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId),cancellationToken);
       }
 
        protected IQueryable<StudentTest> Filter(StudentTest query, CancellationToken cancellationToken = default)
@@ -435,7 +435,7 @@ namespace GD.Data.Services
                            &&(query.PasswordHash == default || e.PasswordHash.Contains(query.PasswordHash))   
                            &&(query.CreateDate == default || e.CreateDate == query.CreateDate)   
                            &&(query.status == default || e.status == query.status)   
-                           &&(query.information == default || e.information == query.information)   
+                           &&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)   
                            &&(query.UniqueId == default || e.UniqueId == query.UniqueId)   
                            &&(query.Password == default || e.Password.Contains(query.Password))   
                            &&(query.PasswordSalt == default || e.PasswordSalt.Contains(query.PasswordSalt))   
@@ -458,7 +458,7 @@ namespace GD.Data.Services
          return await dbContext.Set<User>()
                         .AsNoTracking()
                         .FirstOrDefaultAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
       public async Task<List<User>> QueryListAsync(User query, CancellationToken cancellationToken = default)
       {
@@ -470,7 +470,7 @@ namespace GD.Data.Services
          return await dbContext.Set<User>()
                         .AsNoTracking()
                         .AnyAsync(e => 
-                           (query.id == default || e.id == query.id)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
+                           (query.id == default || e.id == query.id)&&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)&&(query.UniqueId == default || e.UniqueId == query.UniqueId),cancellationToken);
       }
 
        
