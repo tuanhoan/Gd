@@ -108,7 +108,7 @@ namespace GD.Data.Services
                     entity.CreatedDate = DateTime.Now;
                     entity.CreatedBy = GetUserID()== null ? 1 : GetUserID();
                     entity.UpdatedDate = DateTime.Now;
-                    entity.UpdatedBy = GetUserID()== null ? 1 : GetUserID();
+                    entity.UpdatedBy = GetUserID() == null ? 1 : GetUserID();
                 }
                 else
                 {

@@ -9,8 +9,8 @@ namespace GD.API.Controllers
     [ApiController]
     public class GDBaseController : ControllerBase
     {
-        private IChangeService _changeService;
-        private IQueryService _queryService;
+        public IChangeService _changeService;
+        public IQueryService _queryService;
 
         public GDBaseController(IChangeService changeService, IQueryService queryService)
         {

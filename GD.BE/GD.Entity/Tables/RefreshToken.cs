@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GD.Entity.Tables
 {
-    [Table("luongSA.RefreshToken")]
+    [Table("RefreshToken")]
     public partial class RefreshToken
     {
         [Key]

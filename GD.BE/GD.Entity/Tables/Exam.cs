@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GD.Entity.Tables
 {
-    [Table("luongSA.Exam")]
+    [Table("Exam")]
     public partial class Exam
     {
         public Exam()
