@@ -2,6 +2,7 @@
 #nullable disable
 using GD.Entity.Tables;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GD.Entity.Responsitories
 {
@@ -32,6 +33,10 @@ namespace GD.Entity.Responsitories
                 table.ExamFId,
                 table.QuestionFId
             });
+            modelBuilder.Entity<MilitaryInformation>()
+                .HasKey(table => table.id)
+                .HasName("id")
+                .HasAnnotation("DatabaseGenerated", DatabaseGeneratedOption.None); ;
             OnModelCreatingPartial(modelBuilder);
         }
 

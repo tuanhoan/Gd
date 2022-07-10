@@ -11,6 +11,7 @@ using System;
 
 namespace GD.Data.Services
 {
+
     public class UserService : IUserService
     {
         private readonly GDContext _gDContext;
