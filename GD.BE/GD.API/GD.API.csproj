@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GD.Data\GD.Data.csproj" />
+    <ProjectReference Include="..\GD.SDK\GD.SDK.csproj" />
   </ItemGroup>
 
 </Project>

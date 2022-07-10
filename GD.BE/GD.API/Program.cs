@@ -1,12 +1,15 @@
 using GD.API.Helpers;
 using GD.Data.StartupExtensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 var appSettingSection = configuration.GetSection("AppSettings");
+builder.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
 var appSetting = appSettingSection.Get<AppSettings>();
 var key = Encoding.ASCII.GetBytes(appSetting.Secret);
 // Add services to the container.

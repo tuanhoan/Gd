@@ -1,4 +1,5 @@
 ﻿using GD.Data.Interfaces;
+using GD.Data.Services.Interface;
 using GD.Requests;
 using GD.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -13,11 +14,12 @@ namespace GD.API.Controllers
         private readonly IUserService userService;
         private readonly ITokenService tokenService;
 
-        public UsersController(IUserService userService, ITokenService tokenService)
+        public UsersController(IChangeService changeService, IQueryService queryService, IUserService userService, ITokenService tokenService) : base(changeService, queryService)
         {
             this.userService = userService;
             this.tokenService = tokenService;
         }
+
 
         [HttpPost]
         [Route("login")]
