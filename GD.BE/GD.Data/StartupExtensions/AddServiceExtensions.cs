@@ -6,6 +6,7 @@ using GD.SDK.Data.EFService;
 using GD.SDK.Metadata;
 using GD.Data.Services.Interface;
 using GD.Data.Services;
+using GD.Data.Interfaces;
 
 namespace GD.Data.StartupExtensions
 {
@@ -15,6 +16,8 @@ namespace GD.Data.StartupExtensions
         {
             services.AddTransient<IQueryService, QueryService>();
             services.AddTransient<IChangeService, ChangeService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITokenService, TokenService>(); 
             services.AddDbContext<GDContext>(options =>
             {
                options.UseSqlServer(

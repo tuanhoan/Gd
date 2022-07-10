@@ -28,7 +28,10 @@ namespace GD.Entity.Responsitories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<ExamQuestion>().HasKey(table => new {
+                table.ExamFId,
+                table.QuestionFId
+            });
             OnModelCreatingPartial(modelBuilder);
         }
 
