@@ -11,7 +11,6 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        [ForeignKey("MilitaryInformation")]
         public int? MilitaryInformationFId { get; set; }
         [MaxLength(50)]
         public string ClassName { get; set; }

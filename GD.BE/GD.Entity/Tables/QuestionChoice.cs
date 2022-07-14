@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,8 +17,8 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+        [ForeignKey("Question")]
         public int? QuestionFId { get; set; }
-        public string content { get; set; }
         [MaxLength(200)]
         public string ImageUrl { get; set; }
         public bool? is_answer { get; set; }
@@ -25,6 +26,7 @@ namespace GD.Entity.Tables
         public int CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedBy { get; set; }
+        public string content { get; set; }
 
         public Question Question { get; set; }
         public List<StudentTest> StudentTests { get; set; }

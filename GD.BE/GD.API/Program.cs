@@ -12,6 +12,9 @@ var appSettingSection = configuration.GetSection("AppSettings");
 builder.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
 var appSetting = appSettingSection.Get<AppSettings>();
 var key = Encoding.ASCII.GetBytes(appSetting.Secret);
+
+builder.Services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 // Add services to the container.
 builder.Services.AddServices(configuration)
                 .AddValidators(configuration);

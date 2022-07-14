@@ -193,7 +193,6 @@ namespace GD.Data.Services
                         .AsNoTracking()
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
-                           &&(query.Content == default || e.Content.Contains(query.Content))   
                            &&(query.ImageUrl == default || e.ImageUrl.Contains(query.ImageUrl))   
                            &&(query.SubjectName == default || e.SubjectName.Contains(query.SubjectName))   
                            &&(query.QuestionLevel == default || e.QuestionLevel == query.QuestionLevel)   
@@ -201,6 +200,7 @@ namespace GD.Data.Services
                            &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
                            &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
                            &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.content == default || e.content.Contains(query.content))   
                            &&(query.ExamQuestions == default || e.ExamQuestions == query.ExamQuestions)   
                            &&(query.QuestionChoices == default || e.QuestionChoices == query.QuestionChoices)   
                            
@@ -234,13 +234,13 @@ namespace GD.Data.Services
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
                            &&(query.QuestionFId == default || e.QuestionFId == query.QuestionFId)   
-                           &&(query.content == default || e.content.Contains(query.content))   
                            &&(query.ImageUrl == default || e.ImageUrl.Contains(query.ImageUrl))   
                            &&(query.is_answer == default || e.is_answer == query.is_answer)   
                            &&(query.CreatedDate == default || e.CreatedDate == query.CreatedDate)   
                            &&(query.CreatedBy == default || e.CreatedBy == query.CreatedBy)   
                            &&(query.UpdatedDate == default || e.UpdatedDate == query.UpdatedDate)   
                            &&(query.UpdatedBy == default || e.UpdatedBy == query.UpdatedBy)   
+                           &&(query.content == default || e.content.Contains(query.content))   
                            &&(query.Question == default || e.Question == query.Question)   
                            &&(query.StudentTests == default || e.StudentTests == query.StudentTests)   
                            
@@ -432,7 +432,6 @@ namespace GD.Data.Services
                         .Where(e => 
                            (query.id == default || e.id == query.id)   
                            &&(query.Username == default || e.Username.Contains(query.Username))   
-                           &&(query.PasswordHash == default || e.PasswordHash.Contains(query.PasswordHash))   
                            &&(query.CreateDate == default || e.CreateDate == query.CreateDate)   
                            &&(query.status == default || e.status == query.status)   
                            &&(query.MilitaryInformationFId == default || e.MilitaryInformationFId == query.MilitaryInformationFId)   

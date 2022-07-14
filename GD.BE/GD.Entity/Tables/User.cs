@@ -18,16 +18,13 @@ namespace GD.Entity.Tables
         public int id { get; set; }
         [MaxLength(50)]
         public string Username { get; set; }
-        [MaxLength(50)]
-        public string PasswordHash { get; set; }
         public DateTime CreateDate { get; set; }
         public int? status { get; set; }
-        [ForeignKey("MilitaryInformation")]
         public int? MilitaryInformationFId { get; set; }
         public Guid? UniqueId { get; set; }
-        [MaxLength(225)]
+        [MaxLength(256)]
         public string Password { get; set; }
-        [MaxLength(10)]
+        [MaxLength(256)]
         public string PasswordSalt { get; set; }
         public bool? Active { get; set; }
         [MaxLength(50)]

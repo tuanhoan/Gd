@@ -17,7 +17,6 @@ namespace GD.Entity.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public string Content { get; set; }
         [MaxLength(200)]
         public string ImageUrl { get; set; }
         [MaxLength(200)]
@@ -27,6 +26,7 @@ namespace GD.Entity.Tables
         public int CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? UpdatedBy { get; set; }
+        public string content { get; set; }
 
         public List<ExamQuestion> ExamQuestions { get; set; }
         public List<QuestionChoice> QuestionChoices { get; set; }

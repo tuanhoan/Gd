@@ -1,0 +1,41 @@
+<div *ngFor="let item of datas; let i = index">
+  <nz-card nzType="inner" nzTitle="{{ item.content }}" class="mb-3">
+    <div *ngIf="item.image != null">
+      <img
+        nz-image
+        width="200px"
+        height="200px"
+        nzSrc="{{ item.image }}"
+        alt=""
+      />
+      <nz-divider></nz-divider>
+    </div>
+
+    <div *ngIf="!item.isMultiple">
+      <nz-radio-group [(ngModel)]="item.selected">
+        <div *ngFor="let answer of item.questionChoiceDtos">
+          <label nz-radio nzValue="{{ answer.id }}">{{ answer.content }}</label>
+        </div>
+      </nz-radio-group>
+    </div>
+
+    <div *ngIf="item.isMultiple">
+      <nz-checkbox-wrapper
+        style="width: 100%"
+        (nzOnChange)="SelectChange($event, item.id)"
+      >
+        <div nz-row>
+          <div nz-col nzSpan="24" *ngFor="let answer of item.questionChoiceDtos">
+            <label nz-checkbox nzValue="{{ answer.id }}">{{
+              answer.content
+            }}</label>
+          </div>
+        </div>
+      </nz-checkbox-wrapper>
+    </div>
+  </nz-card>
+</div>
+<br />
+<div>
+  <button nz-button nzType="primary" (click)="Submit()">Xác nhận</button>
+</div>

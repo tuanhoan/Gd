@@ -5,15 +5,13 @@ import { WelcomeStudentComponent } from './welcomeStudent/welcomeStudent.compone
 
 const routes: Routes = [
   {
-      path: 'sinhvien',
-      component: StudentComponent,
-      children: [
-          { path: 'welcomestudent', component: WelcomeStudentComponent }
-      ]
-  }
+    path: 'sinhvien',
+    component: StudentComponent,
+    children: [{ path: 'welcomestudent', component: WelcomeStudentComponent }],
+  },
 ];
 @NgModule({
-  imports: [    RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class StudentRoutingModule { }
+export class StudentRoutingModule {}

@@ -19,7 +19,6 @@ namespace GD.Entity.Tables
         public int? Class { get; set; }
         [MaxLength(10)]
         public string StudentCode { get; set; }
-        [ForeignKey("MilitaryInformation")]
         public int? MilitaryInformationFId { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }

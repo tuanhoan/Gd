@@ -66,6 +66,7 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
 import { IconModule } from '@ant-design/icons-angular';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   exports: [
@@ -138,6 +139,7 @@ import { IconModule } from '@ant-design/icons-angular';
     NzLayoutModule,
     NzPaginationModule,
     NzSelectModule,
+    NzImageModule
   ]
 })
 export class NgZorroAntdModule {
