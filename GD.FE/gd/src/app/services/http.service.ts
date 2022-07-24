@@ -13,4 +13,11 @@ export class HttpService {
     return this.httpClient.get<any>(`${environment.apiUrl}/${url}`);
   }
 
+  public Post(url: string, data: any, newOption: any = null): Observable<any> {
+    url = `${environment.apiUrl}/${url}`;
+    // if (newOption != null) {
+    //   this.httpOptions = newOption;
+    // }
+    return this.httpClient.post<any>(url, data);
+  }
 }

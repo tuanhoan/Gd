@@ -1,5 +1,9 @@
 <div *ngFor="let item of datas; let i = index">
-  <nz-card nzType="inner" nzTitle="{{ item.content }}" class="mb-3">
+  <nz-card
+    nzType="inner"
+    nzTitle="Câu {{ i + 1 }}: {{ item.content }}"
+    class="mb-3"
+  >
     <div *ngIf="item.image != null">
       <img
         nz-image
@@ -22,10 +26,14 @@
     <div *ngIf="item.isMultiple">
       <nz-checkbox-wrapper
         style="width: 100%"
-        (nzOnChange)="SelectChange($event, item.id)"
+        (nzOnChange)="SelectChange($event, item.id, item)"
       >
         <div nz-row>
-          <div nz-col nzSpan="24" *ngFor="let answer of item.questionChoiceDtos">
+          <div
+            nz-col
+            nzSpan="24"
+            *ngFor="let answer of item.questionChoiceDtos"
+          >
             <label nz-checkbox nzValue="{{ answer.id }}">{{
               answer.content
             }}</label>

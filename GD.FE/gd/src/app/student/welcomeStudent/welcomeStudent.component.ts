@@ -89,10 +89,23 @@ export class WelcomeStudentComponent implements OnInit {
     });
   }
 
+  rs: any;
+
   Submit() {
-    console.log(this.datas);
+    this.rs = this.datas.map((x: any) => {
+      return { questionId: x.questionId, answerChoice: x.selected +''};
+    });
+
+    console.log(this.rs);
+    this.htppService.Post('Quizs', this.rs).subscribe((data) => {
+      console.log(data);
+    });
   }
-  SelectChange(value: string[], id: number): void {
-    this.datas.find((x) => x.id == id).selected = value;
+  SelectChange(value: string[], id: number, item): void {
+    let index = this.datas.indexOf(item);
+    item.selected = value.map((x) => x).join(',');
+    this.datas[index] = item;
+
+    console.log(this.datas);
   }
 }
